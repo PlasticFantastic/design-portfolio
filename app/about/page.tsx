@@ -15,11 +15,13 @@ const oswald = Oswald({
   display: 'swap',
 });
 
-// Явный тип 4-элементного кортежа для совпадения с Easing в Framer Motion
-const customEase: [number, number, number, number] = [0.16, 1, 0.3, 1];
-const sparkEase: [number, number, number, number] = [0.25, 0.1, 0.25, 1];
+// Строгий тип 4-элементного кортежа без readonly, который ждёт Framer Motion
+type CubicBezier = [number, number, number, number];
 
-// Объект вариантов анимации с явным типом Variants
+const customEase: CubicBezier = [0.16, 1, 0.3, 1];
+const sparkEase: CubicBezier = [0.25, 0.1, 0.25, 1];
+
+// Варианты анимации с явным типом Variants
 const fadeInUp: Variants = {
   hidden: { opacity: 0, y: 25 },
   visible: { 
@@ -106,7 +108,7 @@ const education = [
   },
 ];
 
-// Сбалансированная конфигурация точек вылета искр
+// Конфигурация точек вылета искр
 const sparkProjects = [
   {
     src: '/cases/slimmer/cover.webp',
@@ -150,7 +152,6 @@ const sparkProjects = [
   },
 ];
 
-// Компонент анимированного заголовка с набором текста
 function TypewriterHeading() {
   const phrases = [
     'цифровые продукты',
@@ -204,7 +205,6 @@ function TypewriterHeading() {
   );
 }
 
-// Контейнер фото с плавным покачиванием
 function RevealPhotoCard() {
   const [isHovered, setIsHovered] = useState(false);
 
@@ -224,13 +224,9 @@ function RevealPhotoCard() {
       className="relative w-full aspect-square max-w-[340px] sm:max-w-[380px] lg:max-w-[420px] mx-auto lg:ml-auto rounded-3xl p-2.5 bg-white/70 border border-gray-200/80 shadow-[0_20px_50px_rgba(0,0,0,0.08)] backdrop-blur-md group cursor-pointer select-none transition-all duration-500 hover:border-[#FF4D2D]/40 hover:shadow-[0_25px_60px_rgba(255,77,45,0.18)]"
     >
       <div className="relative w-full h-full rounded-2xl overflow-hidden bg-[#111827]">
-        
-        {/* Базовое фото */}
         <motion.div
           className="absolute inset-0"
-          animate={{
-            scale: isHovered ? 1.06 : 1,
-          }}
+          animate={{ scale: isHovered ? 1.06 : 1 }}
           transition={{ duration: 0.7, ease: customEase }}
         >
           <Image
@@ -243,7 +239,6 @@ function RevealPhotoCard() {
           />
         </motion.div>
 
-        {/* Второе фото с круговым раскрытием (Circle Mask) */}
         <motion.div
           className="absolute inset-0 z-10"
           initial={false}
@@ -253,10 +248,7 @@ function RevealPhotoCard() {
               : 'circle(0% at 100% 0%)',
             scale: isHovered ? 1.04 : 1.12,
           }}
-          transition={{
-            duration: 0.7,
-            ease: customEase,
-          }}
+          transition={{ duration: 0.7, ease: customEase }}
         >
           <Image
             src="/img/about-me-hover.png"
@@ -267,35 +259,24 @@ function RevealPhotoCard() {
           />
         </motion.div>
 
-        {/* Скользящий световой блик */}
         <motion.div
-          animate={{
-            x: isHovered ? ['-100%', '200%'] : '-100%',
-          }}
-          transition={{
-            duration: 0.9,
-            ease: 'easeInOut',
-          }}
+          animate={{ x: isHovered ? ['-100%', '200%'] : '-100%' }}
+          transition={{ duration: 0.9, ease: 'easeInOut' }}
           className="absolute inset-0 z-20 bg-gradient-to-r from-transparent via-white/25 to-transparent -skew-x-12 pointer-events-none"
         />
 
-        {/* Фиксированная плашка */}
         <div className="absolute bottom-3 left-3 z-30 px-3 py-1 rounded-full bg-[#111827]/90 backdrop-blur-md border border-white/10 text-white font-mono text-[10px] font-bold tracking-widest uppercase shadow-md flex items-center gap-2">
           <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
           <span>NIKOLAY VISHNEV</span>
         </div>
-
       </div>
     </motion.div>
   );
 }
 
-// Кнопка перехода к проектам с оптимизированной плавностью искр
 function ProjectsSparkButton() {
   return (
     <div className="relative py-16 sm:py-20 flex justify-center items-center">
-      
-      {/* Точный геометрический центр для вылета искр */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-0 h-0 pointer-events-none z-0">
         {sparkProjects.map((spark, idx) => (
           <motion.div
@@ -331,16 +312,12 @@ function ProjectsSparkButton() {
         ))}
       </div>
 
-      {/* Кнопка */}
       <Link
         href="/cases"
         className="group relative z-10 inline-flex items-center gap-3 px-9 py-4.5 rounded-full bg-[#111827] text-white text-xs font-mono font-bold uppercase tracking-widest overflow-hidden transition-all duration-300 hover:bg-[#FF4D2D] hover:shadow-[0_0_40px_rgba(255,77,45,0.45)] hover:scale-105 active:scale-95 border border-white/10"
       >
-        {/* Скользящий блик */}
         <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-out" />
-        
         <span>Смотреть проекты</span>
-        
         <motion.svg
           className="w-4 h-4 text-[#FF4D2D] group-hover:text-white transition-colors"
           fill="none"
@@ -364,7 +341,6 @@ export default function AboutPage() {
   const footerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    // Автоматический расчёт стажа с Октября 2021
     const startDate = new Date(2021, 9, 1);
     const now = new Date();
 
@@ -416,11 +392,8 @@ export default function AboutPage() {
 
   return (
     <main className="relative w-full bg-[#111827] text-[#111827] overflow-x-hidden font-sans select-none antialiased">
-      
-      {/* Полноэкранное меню */}
       <FullscreenMenu isOpen={isMenuOpen} onClose={() => setIsMenuOpen(false)} />
 
-      {/* ФИКСИРОВАННАЯ КНОПКА «НАЗАД» */}
       <Link
         href="/"
         className="fixed top-3.5 left-3.5 sm:top-5 sm:left-6 z-50 group flex items-center gap-2.5 px-4 py-2.5 rounded-full bg-[#111827]/90 hover:bg-[#FF4D2D] text-white backdrop-blur-md border border-white/10 shadow-2xl shadow-black/20 transition-all duration-300 text-xs font-mono font-semibold uppercase tracking-wider hover:scale-105 active:scale-95"
@@ -437,7 +410,6 @@ export default function AboutPage() {
         <span className="hidden sm:inline">Назад</span>
       </Link>
 
-      {/* ХЕДЕР */}
       <header className="fixed top-0 inset-x-0 z-50 pointer-events-none flex justify-center">
         <AnimatePresence>
           {!isMenuOpen && (
@@ -477,7 +449,6 @@ export default function AboutPage() {
         </AnimatePresence>
       </header>
 
-      {/* ОСНОВНОЙ СВЕТЛЫЙ КОНТЕНТ (ВЕРХНИЙ СЛОЙ) */}
       <div 
         className="relative z-10 w-full bg-[#F8F9FA] rounded-b-[32px] sm:rounded-b-[40px] shadow-[0_30px_80px_rgba(0,0,0,0.5)] pt-20 lg:pt-24 pb-8 lg:pb-12 border-b border-gray-300"
         style={{ marginBottom: `${footerHeight}px` }}
@@ -485,8 +456,6 @@ export default function AboutPage() {
         <HeroGlowCanvas />
 
         <section className="relative z-10 w-full px-6 md:px-12 lg:px-16 py-8 lg:py-12 space-y-16 lg:space-y-24">
-          
-          {/* HERO / ИНТРО */}
           <motion.div 
             initial="hidden" 
             animate="visible" 
@@ -518,7 +487,6 @@ export default function AboutPage() {
             </div>
           </motion.div>
 
-          {/* СЕКЦИЯ: ОПЫТ РАБОТЫ */}
           <div className="space-y-8">
             <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-2 border-b border-gray-200/80 pb-4">
               <div className="flex flex-wrap items-baseline gap-2 sm:gap-3">
@@ -605,7 +573,6 @@ export default function AboutPage() {
             </div>
           </div>
 
-          {/* СЕКЦИЯ: ОБРАЗОВАНИЕ */}
           <div className="space-y-8">
             <div className="border-b border-gray-200/80 pb-4">
               <h2 className={`${oswald.className} text-2xl sm:text-4xl font-bold uppercase tracking-tight text-[#111827]`}>
@@ -642,7 +609,6 @@ export default function AboutPage() {
               ))}
             </div>
 
-            {/* Анимированная кнопка перехода к проектам с эффектом искр */}
             <motion.div
               initial="hidden"
               whileInView="visible"
@@ -652,11 +618,9 @@ export default function AboutPage() {
               <ProjectsSparkButton />
             </motion.div>
           </div>
-
         </section>
       </div>
 
-      {/* ТЕМНАЯ СЕКЦИЯ: FIXED REVEAL (НИЖНИЙ СЛОЙ) */}
       <div 
         ref={footerRef}
         className="relative lg:fixed lg:bottom-0 lg:left-0 w-full z-0 flex flex-col"
@@ -665,8 +629,6 @@ export default function AboutPage() {
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[400px] bg-[#FF4D2D]/10 rounded-full blur-[160px] pointer-events-none" />
 
           <div className="relative z-10 w-full grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch">
-            
-            {/* СЛЕВА: КОМПАКТНЫЙ БЛОК CV / РЕЗЮМЕ */}
             <motion.div
               initial="hidden"
               whileInView="visible"
@@ -724,7 +686,6 @@ export default function AboutPage() {
               </div>
             </motion.div>
 
-            {/* СПРАВА: БЛОК С КНОПКАМИ СВЯЗИ */}
             <motion.div
               initial="hidden"
               whileInView="visible"
@@ -789,7 +750,6 @@ export default function AboutPage() {
                 </a>
               </div>
             </motion.div>
-
           </div>
         </section>
 
@@ -805,7 +765,6 @@ export default function AboutPage() {
           </div>
         </footer>
       </div>
-
     </main>
   );
 }
