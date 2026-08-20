@@ -17,8 +17,8 @@ const oswald = Oswald({
 });
 
 // Явная типизация кортежа из 4 чисел для совместимости с Easing в Framer Motion
-const customEase: [number, number, number, number] = [0.16, 1, 0.3, 1];
-const sparkEase: [number, number, number, number] = [0.25, 0.1, 0.25, 1];
+const customEase: any = [0.16, 1, 0.3, 1];
+const sparkEase: any = [0.25, 0.1, 0.25, 1];
 
 // Данные об опыте работы
 const experiences = [
