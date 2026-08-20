@@ -15,12 +15,10 @@ const oswald = Oswald({
   display: 'swap',
 });
 
-type CubicBezier = [number, number, number, number];
+const customEase = [0.16, 1, 0.3, 1] as any;
+const sparkEase = [0.25, 0.1, 0.25, 1] as any;
 
-const customEase: CubicBezier = [0.16, 1, 0.3, 1] as const;
-const sparkEase: CubicBezier = [0.25, 0.1, 0.25, 1] as const;
-
-const fadeInUp: Variants = {
+const fadeInUp = {
   hidden: { opacity: 0, y: 25 },
   visible: {
     opacity: 1,
@@ -30,7 +28,7 @@ const fadeInUp: Variants = {
       ease: customEase,
     },
   },
-};
+} as unknown as Variants;
 
 // Данные об опыте работы
 const experiences = [
