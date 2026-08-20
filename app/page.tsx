@@ -44,7 +44,7 @@ const letterVariants = {
     filter: 'blur(0px)',
     transition: {
       duration: 0.75,
-      ease: [0.16, 1, 0.3, 1],
+      ease: [0.16, 1, 0.3, 1] as const,
     },
   },
 };
@@ -75,7 +75,7 @@ const tagItemVariants = {
     filter: 'blur(0px)',
     transition: { 
       duration: 0.35, 
-      ease: [0.16, 1, 0.3, 1] 
+      ease: [0.16, 1, 0.3, 1] as const,
     },
   },
 };
@@ -165,7 +165,7 @@ function TypewriterDescription({ onComplete }: TypewriterProps) {
         {!isTypingComplete && (
           <motion.span
             animate={{ opacity: [1, 0] }}
-            transition={{ repeat: Infinity, duration: 0.5, ease: 'easeInOut' }}
+            transition={{ repeat: Infinity, duration: 0.5, ease: 'easeInOut' as const }}
             className="inline-block w-[2.5px] h-[0.85em] bg-[#FF4D2D] align-baseline ml-1 -mb-0.5"
           />
         )}
@@ -229,7 +229,7 @@ export default function Home() {
               initial={{ y: -40, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               exit={{ y: -40, opacity: 0 }}
-              transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
+              transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] as const }}
               className="pointer-events-auto flex flex-col items-center"
             >
               <button
@@ -302,7 +302,7 @@ export default function Home() {
         <motion.div
           initial={{ opacity: 0, y: 30, scale: 0.98 }}
           animate={{ opacity: 1, y: 0, scale: 1 }}
-          transition={{ duration: 0.8, delay: 0.3, ease: 'easeOut' }}
+          transition={{ duration: 0.8, delay: 0.3, ease: 'easeOut' as const}}
           onMouseEnter={() => setIsPhotoHovered(true)}
           onMouseLeave={() => setIsPhotoHovered(false)}
           onMouseMove={handlePhotoMouseMove}
@@ -440,7 +440,7 @@ export default function Home() {
             transition={{
               duration: 0.85,
               times: [0, 0.55, 1],
-              ease: [0.76, 0, 0.24, 1],
+              ease: [0.76, 0, 0.24, 1] as const,
             }}
             onAnimationComplete={() => router.push('/about')}
             style={{
