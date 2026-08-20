@@ -15,22 +15,22 @@ const oswald = Oswald({
   display: 'swap',
 });
 
-// Кастуем весь объект as Variants — единственный способ, который стабильно проходит
-// строгую проверку типов framer-motion на Vercel
-const fadeInUp = {
+type CubicBezier = [number, number, number, number];
+
+const customEase: CubicBezier = [0.16, 1, 0.3, 1];
+const sparkEase: CubicBezier = [0.25, 0.1, 0.25, 1];
+
+const fadeInUp: Variants = {
   hidden: { opacity: 0, y: 25 },
   visible: {
     opacity: 1,
     y: 0,
     transition: {
       duration: 0.5,
-      ease: [0.16, 1, 0.3, 1],
+      ease: customEase,
     },
   },
-} as Variants;
-
-const customEase = [0.16, 1, 0.3, 1] as [number, number, number, number];
-const sparkEase = [0.25, 0.1, 0.25, 1] as [number, number, number, number];
+};
 
 // Данные об опыте работы
 const experiences = [
