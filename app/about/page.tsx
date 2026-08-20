@@ -17,8 +17,8 @@ const oswald = Oswald({
 
 type CubicBezier = [number, number, number, number];
 
-const customEase: CubicBezier = [0.16, 1, 0.3, 1];
-const sparkEase: CubicBezier = [0.25, 0.1, 0.25, 1];
+const customEase: CubicBezier = [0.16, 1, 0.3, 1] as const;
+const sparkEase: CubicBezier = [0.25, 0.1, 0.25, 1] as const;
 
 const fadeInUp: Variants = {
   hidden: { opacity: 0, y: 25 },
