@@ -3,7 +3,7 @@
 import { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { motion, AnimatePresence, Variants } from 'framer-motion';
+import { motion, AnimatePresence, Variants, Easing } from 'framer-motion';
 import { Oswald } from 'next/font/google';
 
 import HeroGlowCanvas from '@/components/HeroGlowCanvas';
@@ -15,22 +15,20 @@ const oswald = Oswald({
   display: 'swap',
 });
 
-// Строгий тип 4-элементного кортежа без readonly
-type CubicBezier = [number, number, number, number];
-
-const customEase: CubicBezier = [0.16, 1, 0.3, 1];
-const sparkEase: CubicBezier = [0.25, 0.1, 0.25, 1];
+// Cubic bezier как Easing для совместимости с framer-motion
+const customEase: Easing = [0.16, 1, 0.3, 1];
+const sparkEase: Easing = [0.25, 0.1, 0.25, 1];
 
 // Варианты анимации с явным типом Variants
 const fadeInUp: Variants = {
   hidden: { opacity: 0, y: 25 },
-  visible: { 
-    opacity: 1, 
-    y: 0, 
-    transition: { 
-      duration: 0.5, 
-      ease: customEase as CubicBezier
-    } 
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.5,
+      ease: customEase,
+    },
   },
 };
 
@@ -449,17 +447,17 @@ export default function AboutPage() {
         </AnimatePresence>
       </header>
 
-      <div 
+      <div
         className="relative z-10 w-full bg-[#F8F9FA] rounded-b-[32px] sm:rounded-b-[40px] shadow-[0_30px_80px_rgba(0,0,0,0.5)] pt-20 lg:pt-24 pb-8 lg:pb-12 border-b border-gray-300"
         style={{ marginBottom: `${footerHeight}px` }}
       >
         <HeroGlowCanvas />
 
         <section className="relative z-10 w-full px-6 md:px-12 lg:px-16 py-8 lg:py-12 space-y-16 lg:space-y-24">
-          <motion.div 
-            initial="hidden" 
-            animate="visible" 
-            variants={fadeInUp} 
+          <motion.div
+            initial="hidden"
+            animate="visible"
+            variants={fadeInUp}
             className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center"
           >
             <div className="lg:col-span-7 space-y-6">
@@ -621,7 +619,7 @@ export default function AboutPage() {
         </section>
       </div>
 
-      <div 
+      <div
         ref={footerRef}
         className="relative lg:fixed lg:bottom-0 lg:left-0 w-full z-0 flex flex-col"
       >
@@ -658,7 +656,7 @@ export default function AboutPage() {
                 <h3 className={`${oswald.className} text-3xl sm:text-4xl font-bold text-white uppercase tracking-tight`}>
                   Резюме PDF
                 </h3>
-                
+
                 <p className="text-sm sm:text-base text-gray-400 leading-relaxed">
                   Полный стек, опыт работы и описание кейсов в одном документе.
                 </p>
@@ -698,7 +696,7 @@ export default function AboutPage() {
                 + 02 / CONNECT
               </div>
               <div className="absolute -right-16 -top-16 w-80 h-80 bg-[#FF4D2D]/20 rounded-full blur-3xl pointer-events-none group-hover:bg-[#FF4D2D]/30 transition-all duration-500" />
-              
+
               <svg
                 className="absolute right-6 bottom-6 w-48 h-48 text-white/[0.03] pointer-events-none"
                 fill="none"
