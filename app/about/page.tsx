@@ -1,10 +1,9 @@
-// src/app/about/page.tsx
 'use client';
 
 import { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { motion, AnimatePresence, Variants } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import { Oswald } from 'next/font/google';
 
 import HeroGlowCanvas from '@/components/HeroGlowCanvas';
@@ -16,6 +15,22 @@ const oswald = Oswald({
   display: 'swap',
 });
 
+// Фиксация кортежей с помощью as const для точного соответствия типам Framer Motion
+const customEase = [0.16, 1, 0.3, 1] as const;
+const sparkEase = [0.25, 0.1, 0.25, 1] as const;
+
+// Объект вариантов анимации без строгой аннотации Variants для защиты от рекурсивной ошибки типов
+const fadeInUp = {
+  hidden: { opacity: 0, y: 25 },
+  visible: { 
+    opacity: 1, 
+    y: 0, 
+    transition: { 
+      duration: 0.5, 
+      ease: customEase 
+    } 
+  },
+};
 
 // Данные об опыте работы
 const experiences = [
@@ -135,18 +150,6 @@ const sparkProjects = [
   },
 ];
 
-const fadeInUp: Variants = {
-  hidden: { opacity: 0, y: 25 },
-  visible: { 
-    opacity: 1, 
-    y: 0, 
-    transition: { 
-      duration: 0.5, 
-      ease: 'easeOut' 
-    } 
-  },
-};
-
 // Компонент анимированного заголовка с набором текста
 function TypewriterHeading() {
   const phrases = [
@@ -228,7 +231,7 @@ function RevealPhotoCard() {
           animate={{
             scale: isHovered ? 1.06 : 1,
           }}
-          transition={{ duration: 0.7, ease: 'easeOut' }}
+          transition={{ duration: 0.7, ease: customEase }}
         >
           <Image
             src="/img/about-me.png"
@@ -252,7 +255,7 @@ function RevealPhotoCard() {
           }}
           transition={{
             duration: 0.7,
-            ease: 'easeOut',
+            ease: customEase,
           }}
         >
           <Image
@@ -310,7 +313,7 @@ function ProjectsSparkButton() {
               repeat: Infinity,
               repeatDelay: 0,
               delay: spark.delay,
-              ease: 'easeInOut',
+              ease: sparkEase,
               times: [0, 0.2, 0.75, 1],
             }}
             style={{ willChange: 'transform, opacity' }}
@@ -442,7 +445,7 @@ export default function AboutPage() {
               initial={{ y: -40, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               exit={{ y: -40, opacity: 0 }}
-              transition={{ duration: 0.3, ease: 'easeOut' }}
+              transition={{ duration: 0.3, ease: customEase }}
               className="pointer-events-auto flex flex-col items-center"
             >
               <button
