@@ -3,7 +3,7 @@
 import { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { motion, AnimatePresence, Variants, Easing } from 'framer-motion';
+import { motion, AnimatePresence, Variants } from 'framer-motion';
 import { Oswald } from 'next/font/google';
 
 import HeroGlowCanvas from '@/components/HeroGlowCanvas';
@@ -15,11 +15,10 @@ const oswald = Oswald({
   display: 'swap',
 });
 
-// Cubic bezier как Easing для совместимости с framer-motion
-const customEase: Easing = [0.16, 1, 0.3, 1];
-const sparkEase: Easing = [0.25, 0.1, 0.25, 1];
+// as const + явное приведение — единственный способ, который стабильно проходит строгую проверку framer-motion на Vercel
+const customEase = [0.16, 1, 0.3, 1] as const;
+const sparkEase = [0.25, 0.1, 0.25, 1] as const;
 
-// Варианты анимации с явным типом Variants
 const fadeInUp: Variants = {
   hidden: { opacity: 0, y: 25 },
   visible: {
@@ -27,7 +26,7 @@ const fadeInUp: Variants = {
     y: 0,
     transition: {
       duration: 0.5,
-      ease: customEase,
+      ease: customEase as unknown as [number, number, number, number],
     },
   },
 };
@@ -225,7 +224,7 @@ function RevealPhotoCard() {
         <motion.div
           className="absolute inset-0"
           animate={{ scale: isHovered ? 1.06 : 1 }}
-          transition={{ duration: 0.7, ease: customEase }}
+          transition={{ duration: 0.7, ease: customEase as unknown as [number, number, number, number] }}
         >
           <Image
             src="/img/about-me.png"
@@ -246,7 +245,7 @@ function RevealPhotoCard() {
               : 'circle(0% at 100% 0%)',
             scale: isHovered ? 1.04 : 1.12,
           }}
-          transition={{ duration: 0.7, ease: customEase }}
+          transition={{ duration: 0.7, ease: customEase as unknown as [number, number, number, number] }}
         >
           <Image
             src="/img/about-me-hover.png"
@@ -292,7 +291,7 @@ function ProjectsSparkButton() {
               repeat: Infinity,
               repeatDelay: 0,
               delay: spark.delay,
-              ease: sparkEase,
+              ease: sparkEase as unknown as [number, number, number, number],
               times: [0, 0.2, 0.75, 1],
             }}
             style={{ willChange: 'transform, opacity' }}
@@ -415,7 +414,7 @@ export default function AboutPage() {
               initial={{ y: -40, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               exit={{ y: -40, opacity: 0 }}
-              transition={{ duration: 0.3, ease: customEase }}
+              transition={{ duration: 0.3, ease: customEase as unknown as [number, number, number, number] }}
               className="pointer-events-auto flex flex-col items-center"
             >
               <button
@@ -643,7 +642,6 @@ export default function AboutPage() {
                 className="absolute right-4 bottom-4 w-32 h-32 text-white/[0.03] pointer-events-none transform translate-x-4 translate-y-4"
                 fill="none"
                 viewBox="0 0 24 24"
-                stroke="currentColor"
               >
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="0.5" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
               </svg>
