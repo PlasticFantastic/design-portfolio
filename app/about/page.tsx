@@ -16,9 +16,9 @@ const oswald = Oswald({
   display: 'swap',
 });
 
-// Явная типизация кортежа из 4 чисел для совместимости с Easing в Framer Motion
-const customEase: any = [0.16, 1, 0.3, 1];
-const sparkEase: any = [0.25, 0.1, 0.25, 1];
+// Используем именованные easing-значения Framer Motion для совместимости с типами
+const customEase = 'easeOut';
+const sparkEase = 'easeInOut';
 
 // Данные об опыте работы
 const experiences = [
@@ -140,13 +140,13 @@ const sparkProjects = [
 
 const fadeInUp: Variants = {
   hidden: { opacity: 0, y: 25 },
-  visible: { 
-    opacity: 1, 
-    y: 0, 
-    transition: { 
-      duration: 0.5, 
-      ease: customEase 
-    } 
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.5,
+      ease: customEase,
+    },
   },
 };
 
@@ -224,7 +224,7 @@ function RevealPhotoCard() {
       className="relative w-full aspect-square max-w-[340px] sm:max-w-[380px] lg:max-w-[420px] mx-auto lg:ml-auto rounded-3xl p-2.5 bg-white/70 border border-gray-200/80 shadow-[0_20px_50px_rgba(0,0,0,0.08)] backdrop-blur-md group cursor-pointer select-none transition-all duration-500 hover:border-[#FF4D2D]/40 hover:shadow-[0_25px_60px_rgba(255,77,45,0.18)]"
     >
       <div className="relative w-full h-full rounded-2xl overflow-hidden bg-[#111827]">
-        
+
         {/* Базовое фото */}
         <motion.div
           className="absolute inset-0"
@@ -294,7 +294,7 @@ function RevealPhotoCard() {
 function ProjectsSparkButton() {
   return (
     <div className="relative py-16 sm:py-20 flex justify-center items-center">
-      
+
       {/* Точный геометрический центр для вылета искр */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-0 h-0 pointer-events-none z-0">
         {sparkProjects.map((spark, idx) => (
@@ -338,9 +338,9 @@ function ProjectsSparkButton() {
       >
         {/* Скользящий блик */}
         <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-out" />
-        
+
         <span>Смотреть проекты</span>
-        
+
         <motion.svg
           className="w-4 h-4 text-[#FF4D2D] group-hover:text-white transition-colors"
           fill="none"
@@ -416,7 +416,7 @@ export default function AboutPage() {
 
   return (
     <main className="relative w-full bg-[#111827] text-[#111827] overflow-x-hidden font-sans select-none antialiased">
-      
+
       {/* Полноэкранное меню */}
       <FullscreenMenu isOpen={isMenuOpen} onClose={() => setIsMenuOpen(false)} />
 
@@ -478,19 +478,19 @@ export default function AboutPage() {
       </header>
 
       {/* ОСНОВНОЙ СВЕТЛЫЙ КОНТЕНТ (ВЕРХНИЙ СЛОЙ) */}
-      <div 
+      <div
         className="relative z-10 w-full bg-[#F8F9FA] rounded-b-[32px] sm:rounded-b-[40px] shadow-[0_30px_80px_rgba(0,0,0,0.5)] pt-20 lg:pt-24 pb-8 lg:pb-12 border-b border-gray-300"
         style={{ marginBottom: `${footerHeight}px` }}
       >
         <HeroGlowCanvas />
 
         <section className="relative z-10 w-full px-6 md:px-12 lg:px-16 py-8 lg:py-12 space-y-16 lg:space-y-24">
-          
+
           {/* HERO / ИНТРО */}
-          <motion.div 
-            initial="hidden" 
-            animate="visible" 
-            variants={fadeInUp} 
+          <motion.div
+            initial="hidden"
+            animate="visible"
+            variants={fadeInUp}
             className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center"
           >
             <div className="lg:col-span-7 space-y-6">
@@ -657,7 +657,7 @@ export default function AboutPage() {
       </div>
 
       {/* ТЕМНАЯ СЕКЦИЯ: FIXED REVEAL (НИЖНИЙ СЛОЙ) */}
-      <div 
+      <div
         ref={footerRef}
         className="relative lg:fixed lg:bottom-0 lg:left-0 w-full z-0 flex flex-col"
       >
@@ -665,7 +665,7 @@ export default function AboutPage() {
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[400px] bg-[#FF4D2D]/10 rounded-full blur-[160px] pointer-events-none" />
 
           <div className="relative z-10 w-full grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch">
-            
+
             {/* СЛЕВА: КОМПАКТНЫЙ БЛОК CV / РЕЗЮМЕ */}
             <motion.div
               initial="hidden"
@@ -696,7 +696,7 @@ export default function AboutPage() {
                 <h3 className={`${oswald.className} text-3xl sm:text-4xl font-bold text-white uppercase tracking-tight`}>
                   Резюме PDF
                 </h3>
-                
+
                 <p className="text-sm sm:text-base text-gray-400 leading-relaxed">
                   Полный стек, опыт работы и описание кейсов в одном документе.
                 </p>
@@ -737,7 +737,7 @@ export default function AboutPage() {
                 + 02 / CONNECT
               </div>
               <div className="absolute -right-16 -top-16 w-80 h-80 bg-[#FF4D2D]/20 rounded-full blur-3xl pointer-events-none group-hover:bg-[#FF4D2D]/30 transition-all duration-500" />
-              
+
               <svg
                 className="absolute right-6 bottom-6 w-48 h-48 text-white/[0.03] pointer-events-none"
                 fill="none"
@@ -783,7 +783,7 @@ export default function AboutPage() {
                   className="inline-flex items-center justify-center gap-3 px-8 py-4 rounded-full bg-white/10 hover:bg-white hover:text-[#111827] text-white font-mono font-bold text-xs uppercase tracking-widest border border-white/15 hover:border-transparent transition-all duration-300 shadow-md hover:-translate-y-0.5 active:translate-y-0"
                 >
                   <svg className="w-4 h-4 text-white/80" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                   </svg>
                   <span>greensprites@gmail.com</span>
                 </a>
