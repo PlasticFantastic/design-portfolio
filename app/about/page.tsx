@@ -3,7 +3,7 @@
 import { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion, AnimatePresence, Variants } from 'framer-motion';
 import { Oswald } from 'next/font/google';
 
 import HeroGlowCanvas from '@/components/HeroGlowCanvas';
@@ -15,12 +15,12 @@ const oswald = Oswald({
   display: 'swap',
 });
 
-// Фиксация кортежей с помощью as const для точного соответствия типам Framer Motion
-const customEase = [0.16, 1, 0.3, 1] as const;
-const sparkEase = [0.25, 0.1, 0.25, 1] as const;
+// Явный тип 4-элементного кортежа для совпадения с Easing в Framer Motion
+const customEase: [number, number, number, number] = [0.16, 1, 0.3, 1];
+const sparkEase: [number, number, number, number] = [0.25, 0.1, 0.25, 1];
 
-// Объект вариантов анимации без строгой аннотации Variants для защиты от рекурсивной ошибки типов
-const fadeInUp = {
+// Объект вариантов анимации с явным типом Variants
+const fadeInUp: Variants = {
   hidden: { opacity: 0, y: 25 },
   visible: { 
     opacity: 1, 
