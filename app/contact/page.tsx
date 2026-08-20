@@ -3,7 +3,7 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion, AnimatePresence, Variants } from 'framer-motion';
 import { Oswald } from 'next/font/google';
 
 import HeroGlowCanvas from '@/components/HeroGlowCanvas';
@@ -14,6 +14,9 @@ const oswald = Oswald({
   weight: ['700'],
   display: 'swap',
 });
+
+// Фиксируем тип массива с помощью as const, чтобы TS не выводил тип number[]
+const customEase = [0.16, 1, 0.3, 1] as const;
 
 // Список сменяющихся слов для слайдера
 const SLIDING_WORDS = [
@@ -29,8 +32,8 @@ const SLIDING_WORDS = [
   'функциональное',
 ];
 
-// Улучшенная плавная анимация появления
-const fadeInUp = {
+// Улучшенная плавная анимация появления с явной типизацией Variants
+const fadeInUp: Variants = {
   hidden: { opacity: 0, y: 30 },
   visible: (i: number) => ({
     opacity: 1,
@@ -38,7 +41,7 @@ const fadeInUp = {
     transition: {
       duration: 0.8,
       delay: i * 0.14,
-      ease: [0.16, 1, 0.3, 1],
+      ease: customEase,
     },
   }),
 };
@@ -149,7 +152,7 @@ export default function ContactPage() {
               initial={{ y: -40, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               exit={{ y: -40, opacity: 0 }}
-              transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
+              transition={{ duration: 0.3, ease: customEase }}
               className="pointer-events-auto flex flex-col items-center"
             >
               <button
@@ -219,7 +222,7 @@ export default function ContactPage() {
                     initial={{ y: '100%', opacity: 0 }}
                     animate={{ y: '0%', opacity: 1 }}
                     exit={{ y: '-100%', opacity: 0 }}
-                    transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
+                    transition={{ duration: 0.45, ease: customEase }}
                     className="text-[#FF4D2D] whitespace-nowrap block"
                   >
                     {SLIDING_WORDS[wordIndex]}
