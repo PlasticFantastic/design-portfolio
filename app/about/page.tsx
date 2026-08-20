@@ -138,7 +138,7 @@ const fadeInUp = {
   visible: { 
     opacity: 1, 
     y: 0, 
-    transition: { duration: 0.5, ease: [0.16, 1, 0.3, 1] } 
+    transition: { duration: 0.5, ease: [0.16, 1, 0.3, 1] as const} 
   },
 };
 
@@ -188,7 +188,7 @@ function TypewriterHeading() {
         {currentText}
         <motion.span
           animate={{ opacity: [1, 0] }}
-          transition={{ repeat: Infinity, duration: 0.5, ease: 'easeInOut' }}
+          transition={{ repeat: Infinity, duration: 0.5, ease: 'easeInOut' as const}}
           className="inline-block w-[3px] sm:w-[4px] lg:w-[5px] h-[0.82em] bg-[#FF4D2D] align-baseline ml-1 -mb-1"
         />
       </span>
@@ -209,7 +209,7 @@ function RevealPhotoCard() {
       transition={{
         duration: 6,
         repeat: Infinity,
-        ease: 'easeInOut',
+        ease: 'easeInOut' as const,
       }}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
@@ -223,7 +223,7 @@ function RevealPhotoCard() {
           animate={{
             scale: isHovered ? 1.06 : 1,
           }}
-          transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+          transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] as const}}
         >
           <Image
             src="/img/about-me.png"
@@ -247,7 +247,7 @@ function RevealPhotoCard() {
           }}
           transition={{
             duration: 0.7,
-            ease: [0.16, 1, 0.3, 1],
+            ease: [0.16, 1, 0.3, 1] as const,
           }}
         >
           <Image
@@ -266,7 +266,7 @@ function RevealPhotoCard() {
           }}
           transition={{
             duration: 0.9,
-            ease: 'easeInOut',
+            ease: 'easeInOut' as const,
           }}
           className="absolute inset-0 z-20 bg-gradient-to-r from-transparent via-white/25 to-transparent -skew-x-12 pointer-events-none"
         />
@@ -305,7 +305,7 @@ function ProjectsSparkButton() {
               repeat: Infinity,
               repeatDelay: 0,
               delay: spark.delay,
-              ease: [0.25, 0.1, 0.25, 1],
+              ease: [0.25, 0.1, 0.25, 1] as const,
               times: [0, 0.2, 0.75, 1],
             }}
             style={{ willChange: 'transform, opacity' }}
@@ -340,7 +340,7 @@ function ProjectsSparkButton() {
           stroke="currentColor"
           strokeWidth="2.5"
           animate={{ x: [0, 4, 0] }}
-          transition={{ repeat: Infinity, duration: 1.5, ease: 'easeInOut' }}
+          transition={{ repeat: Infinity, duration: 1.5, ease: 'easeInOut' as const}}
         >
           <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
         </motion.svg>
@@ -437,7 +437,7 @@ export default function AboutPage() {
               initial={{ y: -40, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               exit={{ y: -40, opacity: 0 }}
-              transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
+              transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] as const }}
               className="pointer-events-auto flex flex-col items-center"
             >
               <button
