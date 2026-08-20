@@ -15,7 +15,7 @@ const oswald = Oswald({
   display: 'swap',
 });
 
-// Строгий тип 4-элементного кортежа без readonly, который ждёт Framer Motion
+// Строгий тип 4-элементного кортежа без readonly
 type CubicBezier = [number, number, number, number];
 
 const customEase: CubicBezier = [0.16, 1, 0.3, 1];
@@ -29,7 +29,7 @@ const fadeInUp: Variants = {
     y: 0, 
     transition: { 
       duration: 0.5, 
-      ease: customEase 
+      ease: customEase as CubicBezier
     } 
   },
 };
