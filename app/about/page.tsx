@@ -15,9 +15,11 @@ const oswald = Oswald({
   display: 'swap',
 });
 
-// Константы плавностей (Cubic Bezier) с явной типизацией кортежа из 4 чисел
-const customEase: [number, number, number, number] = [0.16, 1, 0.3, 1];
-const sparkEase: [number, number, number, number] = [0.25, 0.1, 0.25, 1];
+// Явная типизация кортежа из 4 чисел для Framer Motion ease
+type CubicBezier = [number, number, number, number];
+
+const customEase: CubicBezier = [0.16, 1, 0.3, 1];
+const sparkEase: CubicBezier = [0.25, 0.1, 0.25, 1];
 
 // Данные об опыте работы
 const experiences = [
@@ -142,7 +144,10 @@ const fadeInUp: Variants = {
   visible: { 
     opacity: 1, 
     y: 0, 
-    transition: { duration: 0.5, ease: customEase } 
+    transition: { 
+      duration: 0.5, 
+      ease: customEase as CubicBezier 
+    } 
   },
 };
 
