@@ -15,10 +15,11 @@ const oswald = Oswald({
   display: 'swap',
 });
 
-const customEase = [0.16, 1, 0.3, 1] as any;
-const sparkEase = [0.25, 0.1, 0.25, 1] as any;
+// Явный кортеж из 4 чисел для Framer Motion Easing
+const customEase: [number, number, number, number] = [0.16, 1, 0.3, 1];
+const sparkEase: [number, number, number, number] = [0.25, 0.1, 0.25, 1];
 
-const fadeInUp = {
+const fadeInUp: Variants = {
   hidden: { opacity: 0, y: 25 },
   visible: {
     opacity: 1,
@@ -28,7 +29,7 @@ const fadeInUp = {
       ease: customEase,
     },
   },
-} as unknown as Variants;
+};
 
 // Данные об опыте работы
 const experiences = [
