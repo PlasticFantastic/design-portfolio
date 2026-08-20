@@ -15,6 +15,10 @@ const oswald = Oswald({
   display: 'swap',
 });
 
+// Константы плавностей (Cubic Bezier) с явной типизацией кортежа из 4 чисел
+const customEase: [number, number, number, number] = [0.16, 1, 0.3, 1];
+const sparkEase: [number, number, number, number] = [0.25, 0.1, 0.25, 1];
+
 // Данные об опыте работы
 const experiences = [
   {
@@ -138,7 +142,7 @@ const fadeInUp: Variants = {
   visible: { 
     opacity: 1, 
     y: 0, 
-    transition: { duration: 0.5, ease: [0.16, 1, 0.3, 1] as const } 
+    transition: { duration: 0.5, ease: customEase } 
   },
 };
 
@@ -223,7 +227,7 @@ function RevealPhotoCard() {
           animate={{
             scale: isHovered ? 1.06 : 1,
           }}
-          transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] as const }}
+          transition={{ duration: 0.7, ease: customEase }}
         >
           <Image
             src="/img/about-me.png"
@@ -247,7 +251,7 @@ function RevealPhotoCard() {
           }}
           transition={{
             duration: 0.7,
-            ease: [0.16, 1, 0.3, 1] as const,
+            ease: customEase,
           }}
         >
           <Image
@@ -305,7 +309,7 @@ function ProjectsSparkButton() {
               repeat: Infinity,
               repeatDelay: 0,
               delay: spark.delay,
-              ease: [0.25, 0.1, 0.25, 1] as const,
+              ease: sparkEase,
               times: [0, 0.2, 0.75, 1],
             }}
             style={{ willChange: 'transform, opacity' }}
@@ -437,7 +441,7 @@ export default function AboutPage() {
               initial={{ y: -40, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               exit={{ y: -40, opacity: 0 }}
-              transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] as const }}
+              transition={{ duration: 0.3, ease: customEase }}
               className="pointer-events-auto flex flex-col items-center"
             >
               <button
