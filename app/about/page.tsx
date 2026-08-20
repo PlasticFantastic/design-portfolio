@@ -15,7 +15,6 @@ const oswald = Oswald({
   display: 'swap',
 });
 
-// Явный кортеж из 4 чисел для Framer Motion Easing
 const customEase: [number, number, number, number] = [0.16, 1, 0.3, 1];
 const sparkEase: [number, number, number, number] = [0.25, 0.1, 0.25, 1];
 
