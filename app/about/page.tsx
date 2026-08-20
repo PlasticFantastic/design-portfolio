@@ -1,3 +1,4 @@
+// src/app/about/page.tsx
 'use client';
 
 import { useState, useEffect, useRef } from 'react';
@@ -15,9 +16,9 @@ const oswald = Oswald({
   display: 'swap',
 });
 
-// Константы плавности с фиксацией типа кортежа через as const
-const customEase = [0.16, 1, 0.3, 1] as const;
-const sparkEase = [0.25, 0.1, 0.25, 1] as const;
+// Явная типизация кортежа из 4 чисел для совместимости с Easing в Framer Motion
+const customEase: [number, number, number, number] = [0.16, 1, 0.3, 1];
+const sparkEase: [number, number, number, number] = [0.25, 0.1, 0.25, 1];
 
 // Данные об опыте работы
 const experiences = [
