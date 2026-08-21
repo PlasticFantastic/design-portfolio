@@ -570,7 +570,7 @@ export default function SlimmerDoctorCasePage() {
                         />
                       ) : (
                         <div
-                          className={`absolute inset-0 bg-gradient-to-tr ${item.gradient || 'from-gray-900 to-gray-800'} opacity-90`}
+                          className={`absolute inset-0 bg-gradient-to-tr ${(item as any).gradient || 'from-gray-900 to-gray-800'} opacity-90`}
                         />
                       )}
 
@@ -648,7 +648,7 @@ export default function SlimmerDoctorCasePage() {
                           />
                         ) : (
                           <div
-                            className={`absolute inset-0 bg-gradient-to-tr ${currentMobileCase.gradient || 'from-gray-900 to-gray-800'} opacity-90`}
+                            className={`absolute inset-0 bg-gradient-to-tr ${(currentMobileCase as any).gradient || 'from-gray-900 to-gray-800'} opacity-90`}
                           />
                         )}
 
