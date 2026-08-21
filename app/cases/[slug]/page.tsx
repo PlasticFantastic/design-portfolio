@@ -1,4 +1,3 @@
-// src/app/cases/[slug]/page.tsx
 'use client';
 
 import { useState, useEffect, useMemo } from 'react';
@@ -11,7 +10,7 @@ import { ALL_CASES } from '@/data/cases';
 
 const fadeInUp = {
   hidden: { opacity: 0, y: 25 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: [0.16, 1, 0.3, 1] } },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: [0.16, 1, 0.3, 1] as const } },
 };
 
 // Премиальный бейдж этапа
@@ -140,7 +139,7 @@ export default function CaseDetailPage() {
               initial={{ y: -40, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               exit={{ y: -40, opacity: 0 }}
-              transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
+              transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] as const }}
               className="pointer-events-auto flex flex-col items-center"
             >
               <button
@@ -454,7 +453,7 @@ export default function CaseDetailPage() {
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
-                  transition={{ delay: idx * 0.08, duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+                  transition={{ delay: idx * 0.08, duration: 0.5, ease: [0.16, 1, 0.3, 1] as const }}
                 >
                   <Link
                     href={`/cases/${item.slug}`}
@@ -514,7 +513,7 @@ export default function CaseDetailPage() {
                       initial={{ opacity: 0, x: 50 }}
                       animate={{ opacity: 1, x: 0 }}
                       exit={{ opacity: 0, x: -50 }}
-                      transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
+                      transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] as const }}
                       className="cursor-grab active:cursor-grabbing"
                     >
                       <Link
@@ -591,7 +590,7 @@ export default function CaseDetailPage() {
               </div>
               <div className="flex flex-wrap items-center gap-3 shrink-0">
                 <a
-                  href="mailto:contact@designer.com"
+                  href="mailto:greensprites@gmail.com"
                   className="px-6 py-3.5 rounded-full bg-[#FF4D2D] hover:bg-white text-white hover:text-[#111827] font-bold text-xs sm:text-sm transition-all duration-300 shadow-lg"
                 >
                   Написать на почту
