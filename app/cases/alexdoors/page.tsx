@@ -1,3 +1,4 @@
+// app/cases/alexdoors/page.tsx
 'use client';
 
 import { useState, useEffect } from 'react';
@@ -144,7 +145,7 @@ export default function AlexdoorsCasePage() {
               initial={{ y: -40, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               exit={{ y: -40, opacity: 0 }}
-              transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
+              transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] as const }}
               className="pointer-events-auto flex flex-col items-center"
             >
               <button
@@ -261,7 +262,7 @@ export default function AlexdoorsCasePage() {
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
-                  transition={{ delay: idx * 0.08, duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+                  transition={{ delay: idx * 0.08, duration: 0.5, ease: [0.16, 1, 0.3, 1] as const }}
                 >
                   <Link
                     href={`/cases/${item.slug}`}
@@ -278,7 +279,7 @@ export default function AlexdoorsCasePage() {
                         />
                       ) : (
                         <div
-                          className={`absolute inset-0 bg-gradient-to-tr ${item.gradient || 'from-gray-900 to-gray-800'} opacity-90`}
+                          className={`absolute inset-0 bg-gradient-to-tr ${(item as any).gradient || 'from-gray-900 to-gray-800'} opacity-90`}
                         />
                       )}
 
@@ -338,7 +339,7 @@ export default function AlexdoorsCasePage() {
                     initial={{ opacity: 0, x: 40 }}
                     animate={{ opacity: 1, x: 0 }}
                     exit={{ opacity: 0, x: -40 }}
-                    transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
+                    transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] as const }}
                     className="cursor-grab active:cursor-grabbing"
                   >
                     <Link
@@ -356,7 +357,7 @@ export default function AlexdoorsCasePage() {
                           />
                         ) : (
                           <div
-                            className={`absolute inset-0 bg-gradient-to-tr ${currentMobileCase.gradient || 'from-gray-900 to-gray-800'} opacity-90`}
+                            className={`absolute inset-0 bg-gradient-to-tr ${(currentMobileCase as any).gradient || 'from-gray-900 to-gray-800'} opacity-90`}
                           />
                         )}
 
