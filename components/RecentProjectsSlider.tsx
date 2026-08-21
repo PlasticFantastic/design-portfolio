@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect, useCallback } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion, AnimatePresence, Variants } from 'framer-motion';
 import Image, { StaticImageData } from 'next/image';
 import Link from 'next/link';
 
@@ -45,7 +45,7 @@ const projects: Project[] = [
 const SLIDE_DURATION = 5000;
 const SWIPE_THRESHOLD = 50;
 
-const slideVariants = {
+const slideVariants: Variants = {
   enter: (direction: number) => ({
     x: direction > 0 ? 90 : -90,
     opacity: 0,
@@ -59,7 +59,7 @@ const slideVariants = {
     filter: 'blur(0px)',
     transition: {
       duration: 0.5,
-      ease: [0.16, 1, 0.3, 1],
+      ease: [0.16, 1, 0.3, 1] as const,
     },
   },
   exit: (direction: number) => ({
@@ -69,7 +69,7 @@ const slideVariants = {
     filter: 'blur(4px)',
     transition: {
       duration: 0.4,
-      ease: [0.16, 1, 0.3, 1],
+      ease: [0.16, 1, 0.3, 1] as const,
     },
   }),
 };
