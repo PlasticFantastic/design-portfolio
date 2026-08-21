@@ -3,7 +3,7 @@
 
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion, AnimatePresence, Variants } from 'framer-motion';
 
 interface FullscreenMenuProps {
   isOpen: boolean;
@@ -66,7 +66,7 @@ const socialLinks = [
   },
 ];
 
-const overlayVariants = {
+const overlayVariants: Variants = {
   hidden: {
     opacity: 0,
     clipPath: 'polygon(0 0, 100% 0, 100% 0, 0 0)',
@@ -76,7 +76,7 @@ const overlayVariants = {
     clipPath: 'polygon(0 0, 100% 0, 100% 100%, 0 100%)',
     transition: {
       duration: 0.5,
-      ease: [0.16, 1, 0.3, 1],
+      ease: [0.16, 1, 0.3, 1] as const,
       when: 'beforeChildren',
       staggerChildren: 0.05,
     },
@@ -86,18 +86,18 @@ const overlayVariants = {
     clipPath: 'polygon(0 0, 100% 0, 100% 0, 0 0)',
     transition: {
       duration: 0.35,
-      ease: [0.7, 0, 0.84, 0],
+      ease: [0.7, 0, 0.84, 0] as const,
     },
   },
 };
 
-const itemVariants = {
+const itemVariants: Variants = {
   hidden: { opacity: 0, y: 20, filter: 'blur(6px)' },
   visible: {
     opacity: 1,
     y: 0,
     filter: 'blur(0px)',
-    transition: { duration: 0.4, ease: [0.16, 1, 0.3, 1] },
+    transition: { duration: 0.4, ease: [0.16, 1, 0.3, 1] as const },
   },
 };
 
@@ -150,7 +150,7 @@ export default function FullscreenMenu({ isOpen, onClose }: FullscreenMenuProps)
             <motion.button
               initial={{ y: -40, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
-              transition={{ delay: 0.45, duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+              transition={{ delay: 0.45, duration: 0.4, ease: [0.16, 1, 0.3, 1] as const }}
               onClick={onClose}
               className="pointer-events-auto group relative flex items-center justify-center gap-3 px-10 sm:px-12 pt-3 pb-3.5 bg-[#161D2A] text-white text-xs font-mono font-semibold uppercase tracking-widest rounded-b-2xl shadow-2xl border-b border-x border-white/10 hover:bg-[#FF4D2D] transition-all duration-300 hover:pt-4 hover:pb-4 cursor-pointer min-w-[200px]"
             >
