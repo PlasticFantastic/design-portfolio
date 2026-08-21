@@ -192,7 +192,7 @@ export default function BioCasePage() {
                 >
                   <div className="relative w-full aspect-[16/10] overflow-hidden bg-gray-950 rounded-[18px] shadow-md shadow-black/10">
                     <div
-                      className={`absolute inset-0 bg-gradient-to-tr ${item.gradient} opacity-80 group-hover:opacity-100 transition-all duration-700`}
+                      className={`absolute inset-0 bg-gradient-to-tr ${(item as any).gradient} opacity-80 group-hover:opacity-100 transition-all duration-700`}
                     />
                     <div className="relative z-10 w-full h-full flex items-center justify-center text-white font-black text-xl">
                       ✦
@@ -251,7 +251,7 @@ export default function BioCasePage() {
                   >
                     <div className="relative w-full aspect-[16/10] overflow-hidden bg-gray-950 rounded-[18px] shadow-md shadow-black/10">
                       <div
-                        className={`absolute inset-0 bg-gradient-to-tr ${otherCases[activeSlide].gradient} opacity-90`}
+                        className={`absolute inset-0 bg-gradient-to-tr ${(otherCases[activeSlide] as any).gradient} opacity-90`}
                       />
                       <div className="relative z-10 w-full h-full flex items-center justify-center text-white font-black text-xl">
                         ✦
