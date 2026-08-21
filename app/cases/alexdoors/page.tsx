@@ -1,4 +1,3 @@
-// app/cases/alexdoors/page.tsx
 'use client';
 
 import { useState, useEffect } from 'react';
@@ -22,12 +21,11 @@ const fadeIn: Variants = {
 };
 
 const canvasImages = [
-  'doo1.webp', 'doo2.webp', 'doo3.webp', 'doo4.webp', 'doo5.webp', 
-  'doo6.webp', 'doo7.webp', 'doo8.webp', 'doo9.webp', 'doo10.webp', 
-  'doo11.webp', 'doo12.webp', 'doo13.webp', 'doo14.webp', 'doo15.webp'
+  'bio1.webp', 'bio2.webp', 'bio3.webp', 'bio4.webp', 'bio5.webp', 
+  'bio6.webp', 'bio7.webp', 'bio8.webp', 'bio9.webp', 'bio10.webp'
 ];
 
-export default function AlexdoorsCasePage() {
+export default function BioCasePage() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isFinished, setIsFinished] = useState(false);
   const { scrollYProgress } = useScroll();
@@ -41,11 +39,11 @@ export default function AlexdoorsCasePage() {
     }
   });
 
-  // 1. Исключаем текущий кейс (проверяем все варианты slug Letmebel / Alexdoors)
+  // Исключаем текущий кейс (bio)
   const otherCases = ALL_CASES.filter((item) => {
     if (!item || !item.slug) return false;
     const slug = item.slug.toLowerCase();
-    return slug !== 'alexdoors' && slug !== 'letmebel' && !slug.includes('alexdoors') && !slug.includes('letmebel');
+    return slug !== 'bio' && !slug.includes('bio');
   }).slice(0, 3);
 
   const [activeSlide, setActiveSlide] = useState(0);
@@ -171,7 +169,7 @@ export default function AlexdoorsCasePage() {
       <div className="w-full max-w-[1440px] mx-auto px-4 sm:px-8 lg:px-12 pt-28 pb-12 sm:pt-32 sm:pb-16 lg:pb-20">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center">
           
-          {/* Левая часть: Заголовок и тонкое описание (стиль uni) */}
+          {/* Левая часть: Заголовок и описание */}
           <motion.div 
             initial="hidden" 
             animate="visible" 
@@ -179,13 +177,13 @@ export default function AlexdoorsCasePage() {
             className="flex flex-col items-start"
           >
             <span className="inline-block mb-4 sm:mb-6 text-[10px] sm:text-xs font-mono font-bold text-[#FF4D2D] uppercase tracking-widest bg-[#FF4D2D]/10 px-3.5 py-1.5 rounded-full border border-[#FF4D2D]/20">
-              E-Commerce
+              Branding / UI/UX
             </span>
             <h1 className={`${oswald.className} text-4xl sm:text-6xl lg:text-7xl font-bold uppercase tracking-tight text-gray-900 leading-[1.1]`}>
-              Letmebel
+              Bio
             </h1>
             <p className="mt-4 text-lg sm:text-2xl lg:text-3xl font-light text-gray-600 leading-relaxed font-sans max-w-xl">
-              Интернет-магазин мебели
+              Продуктовый дизайн и визуальная концепция
             </p>
           </motion.div>
 
@@ -198,8 +196,8 @@ export default function AlexdoorsCasePage() {
           >
             <div className="w-full rounded-[20px] sm:rounded-[28px] overflow-hidden border border-gray-200/80 shadow-2xl shadow-black/10 bg-white">
               <Image 
-                src="/cases/alexdoors/cover-a.webp" 
-                alt="Cover" 
+                src="/cases/bio/cover.webp" 
+                alt="Cover Bio" 
                 width={1200} 
                 height={800} 
                 className="w-full h-auto object-cover" 
@@ -222,7 +220,7 @@ export default function AlexdoorsCasePage() {
         {canvasImages.map((img, idx) => (
           <Image
             key={idx}
-            src={`/cases/alexdoors/${img}`}
+            src={`/cases/bio/${img}`}
             alt={`Canvas section ${idx + 1}`}
             width={1440}
             height={900} 
@@ -232,7 +230,7 @@ export default function AlexdoorsCasePage() {
         ))}
       </motion.div>
 
-      {/* НИЖНИЙ БЛОК: Последние два блока в стандартной сетке */}
+      {/* НИЖНИЙ БЛОК: Секция "Смотрите также" и футер */}
       <div className="flex-1 w-full max-w-5xl mx-auto px-4 sm:px-8 lg:px-12 pt-24 pb-16 sm:pb-24">
         
         {/* БЛОК "СМОТРИТЕ ТАКЖЕ" */}
