@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
-import { motion, useMotionValue, useSpring, AnimatePresence } from 'framer-motion';
+import { motion, useMotionValue, useSpring, AnimatePresence, Variants } from 'framer-motion';
 import { Oswald } from 'next/font/google';
 
 import HeroGlowCanvas from '@/components/HeroGlowCanvas';
@@ -15,7 +15,7 @@ const oswald = Oswald({
 });
 
 // Анимация заглавных букв и цифр (404 / NOT FOUND)
-const titleContainerVariants = {
+const titleContainerVariants: Variants = {
   hidden: { opacity: 0 },
   visible: {
     opacity: 1,
@@ -26,7 +26,7 @@ const titleContainerVariants = {
   },
 };
 
-const letterVariants = {
+const letterVariants: Variants = {
   hidden: { 
     opacity: 0, 
     y: 30, 
@@ -38,7 +38,7 @@ const letterVariants = {
     filter: 'blur(0px)',
     transition: {
       duration: 0.8,
-      ease: [0.16, 1, 0.3, 1],
+      ease: [0.16, 1, 0.3, 1] as const,
     },
   },
 };
@@ -161,7 +161,7 @@ export default function NotFound() {
               initial={{ y: -40, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               exit={{ y: -40, opacity: 0 }}
-              transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
+              transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] as const }}
               className="pointer-events-auto flex flex-col items-center"
             >
               <button
@@ -307,7 +307,7 @@ export default function NotFound() {
             transition={{
               duration: 0.85,
               times: [0, 0.55, 1],
-              ease: [0.76, 0, 0.24, 1],
+              ease: [0.76, 0, 0.24, 1] as const,
             }}
             onAnimationComplete={() => router.push('/')}
             style={{
