@@ -18,7 +18,7 @@ const oswald = Oswald({
 const customEase = cubicBezier(0.16, 1, 0.3, 1);
 const sparkEase = cubicBezier(0.25, 0.1, 0.25, 1);
 
-const fadeInUp: Variants = {
+const fadeInUp = {
   hidden: { opacity: 0, y: 25 },
   visible: {
     opacity: 1,
@@ -28,7 +28,7 @@ const fadeInUp: Variants = {
       ease: customEase,
     },
   },
-};
+} as unknown as Variants;
 
 // Данные об опыте работы
 const experiences = [
