@@ -3,14 +3,14 @@
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { motion, AnimatePresence, useScroll, useMotionValueEvent } from 'framer-motion';
+import { motion, AnimatePresence, useScroll, useMotionValueEvent, Variants } from 'framer-motion';
 import FullscreenMenu from '@/components/FullscreenMenu';
 import { MicroConfetti } from '@/components/MicroConfetti';
 import { ALL_CASES } from '@/data/cases';
 
-const fadeInUp = {
+const fadeInUp: Variants = {
   hidden: { opacity: 0, y: 25 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: [0.16, 1, 0.3, 1] } },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: [0.16, 1, 0.3, 1] as const } },
 };
 
 function StageBadge({ number }: { number: string }) {
@@ -172,7 +172,7 @@ export default function SlimmerCasePage() {
               initial={{ y: -40, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               exit={{ y: -40, opacity: 0 }}
-              transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
+              transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] as const }}
               className="pointer-events-auto flex flex-col items-center"
             >
               <button
@@ -545,7 +545,7 @@ export default function SlimmerCasePage() {
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
-                    transition={{ delay: idx * 0.08, duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+                    transition={{ delay: idx * 0.08, duration: 0.5, ease: [0.16, 1, 0.3, 1] as const }}
                   >
                     <Link
                       href={`/cases/${item.slug}`}
@@ -622,7 +622,7 @@ export default function SlimmerCasePage() {
                       initial={{ opacity: 0, x: 40 }}
                       animate={{ opacity: 1, x: 0 }}
                       exit={{ opacity: 0, x: -40 }}
-                      transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
+                      transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] as const }}
                       className="cursor-grab active:cursor-grabbing"
                     >
                       <Link

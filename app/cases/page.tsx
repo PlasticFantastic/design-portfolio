@@ -1,4 +1,3 @@
-// src/app/cases/page.tsx
 'use client';
 
 import { useState } from 'react';
@@ -123,7 +122,7 @@ export default function CasesCatalogPage() {
               initial={{ y: -40, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               exit={{ y: -40, opacity: 0 }}
-              transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
+              transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] as const }}
               className="pointer-events-auto flex flex-col items-center"
             >
               <button
@@ -186,7 +185,7 @@ export default function CasesCatalogPage() {
             hidden: { opacity: 0, y: 12 },
             visible: { opacity: 1, y: 0 }
           }}
-          transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+          transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] as const }}
         >
           {char === ' ' ? '\u00A0' : char}
         </motion.span>
@@ -199,7 +198,7 @@ export default function CasesCatalogPage() {
     <motion.div
       initial={{ opacity: 0, y: 15 }}
       animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.8, delay: titleText.length * 0.04 + 0.1, ease: [0.16, 1, 0.3, 1] }}
+      transition={{ duration: 0.8, delay: titleText.length * 0.04 + 0.1, ease: [0.16, 1, 0.3, 1] as const }}
       className="text-gray-500 text-sm sm:text-base leading-relaxed space-y-3"
     >
       <p>
@@ -221,7 +220,7 @@ export default function CasesCatalogPage() {
                 key={item.id}
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: (idx * 0.08) + 0.6, duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+                transition={{ delay: (idx * 0.08) + 0.6, duration: 0.5, ease: [0.16, 1, 0.3, 1] as const }}
               >
                 <Link
                   href={`/cases/${item.slug}`}

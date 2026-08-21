@@ -1,16 +1,16 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { motion, AnimatePresence, useScroll, useMotionValueEvent } from 'framer-motion';
+import { motion, AnimatePresence, useScroll, useMotionValueEvent, Variants } from 'framer-motion';
 import Link from 'next/link';
 import Image from 'next/image';
 import FullscreenMenu from '@/components/FullscreenMenu';
 import { MicroConfetti } from '@/components/MicroConfetti';
 import { ALL_CASES } from '@/data/cases';
 
-const fadeIn = {
+const fadeIn: Variants = {
   hidden: { opacity: 0, y: 20 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] } },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] as const } },
 };
 
 export default function SlimmerDoctorCasePage() {
@@ -131,7 +131,7 @@ export default function SlimmerDoctorCasePage() {
               initial={{ y: -40, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               exit={{ y: -40, opacity: 0 }}
-              transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
+              transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] as const }}
               className="pointer-events-auto flex flex-col items-center"
             >
               <button
@@ -303,7 +303,7 @@ export default function SlimmerDoctorCasePage() {
               <li>видеть свои приемы;</li>
               <li>переключаться между днем, неделей и месяцем;</li>
               <li>открывать карточку пациента;</li>
-              <li>подключаться к консультации.</li>
+              <li>подключиться к консультации.</li>
             </ul>
             <div className="w-full rounded-[22px] overflow-hidden border border-gray-200/80 shadow-xl shadow-black/5">
               <Image src="/cases/slimmer-doc/dd-4.webp" alt="Рабочее место" width={1200} height={800} className="w-full h-auto object-cover" />
@@ -553,7 +553,7 @@ export default function SlimmerDoctorCasePage() {
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
-                  transition={{ delay: idx * 0.08, duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+                  transition={{ delay: idx * 0.08, duration: 0.5, ease: [0.16, 1, 0.3, 1] as const }}
                 >
                   <Link
                     href={`/cases/${item.slug}`}
@@ -630,7 +630,7 @@ export default function SlimmerDoctorCasePage() {
                     initial={{ opacity: 0, x: 40 }}
                     animate={{ opacity: 1, x: 0 }}
                     exit={{ opacity: 0, x: -40 }}
-                    transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
+                    transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] as const }}
                     className="cursor-grab active:cursor-grabbing"
                   >
                     <Link
