@@ -3,7 +3,7 @@
 import { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { motion, AnimatePresence, Variants } from 'framer-motion';
+import { motion, AnimatePresence, Variants, cubicBezier } from 'framer-motion';
 import { Oswald } from 'next/font/google';
 
 import HeroGlowCanvas from '@/components/HeroGlowCanvas';
@@ -15,8 +15,8 @@ const oswald = Oswald({
   display: 'swap',
 });
 
-const customEase: [number, number, number, number] = [0.16, 1, 0.3, 1];
-const sparkEase: [number, number, number, number] = [0.25, 0.1, 0.25, 1];
+const customEase = cubicBezier(0.16, 1, 0.3, 1);
+const sparkEase = cubicBezier(0.25, 0.1, 0.25, 1);
 
 const fadeInUp: Variants = {
   hidden: { opacity: 0, y: 25 },
