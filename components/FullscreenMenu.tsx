@@ -150,26 +150,29 @@ export default function FullscreenMenu({ isOpen, onClose }: FullscreenMenuProps)
               animate={{ y: 0, opacity: 1 }}
               transition={{ delay: 0.3, duration: 0.35, ease: [0.16, 1, 0.3, 1] as const }}
               onClick={onClose}
-              className="pointer-events-auto group relative flex items-center justify-center gap-3 px-10 sm:px-12 pt-3 pb-3.5 bg-[#161D2A] text-white text-xs font-mono font-semibold uppercase tracking-widest rounded-b-2xl shadow-2xl border-b border-x border-white/10 hover:bg-[#FF4D2D] transition-all duration-300 hover:pt-4 hover:pb-4 cursor-pointer min-w-[200px]"
+              className="pointer-events-auto group relative flex items-center justify-center gap-3 px-10 sm:px-12 pt-3 pb-3.5 bg-[#161D2A] text-white text-xs font-mono font-semibold uppercase tracking-widest rounded-b-2xl shadow-2xl hover:bg-[#FF4D2D] transition-all duration-300 hover:pt-4 hover:pb-4 cursor-pointer min-w-[200px]"
             >
+              {/* РАМКА КНОПКИ С ОБРЕЗКОЙ ВЕРХНИХ 16PX */}
+              <div className="absolute inset-0 rounded-b-2xl border-b border-x border-white/10 pointer-events-none [clip-path:inset(16px_0_0_0)]" />
+
               {/* ЛЕВЫЙ ИНВЕРТИРОВАННЫЙ УГОЛ */}
               <svg
-                className="absolute -left-4 top-0 w-[17px] h-4 text-[#161D2A] group-hover:text-[#FF4D2D] transition-colors duration-300 pointer-events-none"
-                viewBox="0 0 17 16"
+                className="absolute -left-4 top-0 w-4 h-4 text-[#161D2A] group-hover:text-[#FF4D2D] transition-colors duration-300 pointer-events-none overflow-visible"
+                viewBox="0 0 16 16"
                 fill="none"
               >
-                <path d="M 16 16 A 16 16 0 0 0 0 0 L 17 0 L 17 16 Z" fill="currentColor" />
-                <path d="M 16 16 A 16 16 0 0 0 0 0" stroke="rgba(255,255,255,0.1)" strokeWidth="1" />
+                <path d="M 0 0 A 16 16 0 0 0 16 16 L 16 0 Z" fill="currentColor" />
+                <path d="M 0 0 A 16 16 0 0 0 16 16" stroke="rgba(255, 255, 255, 0.1)" strokeWidth="1" fill="none" />
               </svg>
 
               {/* ПРАВЫЙ ИНВЕРТИРОВАННЫЙ УГОЛ */}
               <svg
-                className="absolute -right-4 top-0 w-[17px] h-4 text-[#161D2A] group-hover:text-[#FF4D2D] transition-colors duration-300 pointer-events-none"
-                viewBox="0 0 17 16"
+                className="absolute -right-4 top-0 w-4 h-4 text-[#161D2A] group-hover:text-[#FF4D2D] transition-colors duration-300 pointer-events-none overflow-visible"
+                viewBox="0 0 16 16"
                 fill="none"
               >
-                <path d="M 1 16 A 16 16 0 0 1 17 0 L 0 0 L 0 16 Z" fill="currentColor" />
-                <path d="M 1 16 A 16 16 0 0 1 17 0" stroke="rgba(255,255,255,0.1)" strokeWidth="1" />
+                <path d="M 16 0 A 16 16 0 0 0 0 16 L 0 0 Z" fill="currentColor" />
+                <path d="M 16 0 A 16 16 0 0 0 0 16" stroke="rgba(255, 255, 255, 0.1)" strokeWidth="1" fill="none" />
               </svg>
 
               <span>Закрыть</span>
