@@ -267,7 +267,7 @@ export default function FullscreenMenu({ isOpen, onClose }: FullscreenMenuProps)
                       social.isLocked ? (
                         <div
                           key={social.name}
-                          className="relative p-3.5 rounded-xl bg-white/[0.02] border border-white/5 opacity-40 select-none pointer-events-none flex items-center justify-between"
+                          className="hidden sm:flex relative p-3.5 rounded-xl bg-white/[0.02] border border-white/5 opacity-40 sm:blur-[1.5px] select-none pointer-events-none items-center justify-between"
                         >
                           <div className="flex items-center gap-3">
                             <div className="p-2 rounded-lg bg-white/5 text-gray-500">
