@@ -137,7 +137,7 @@ export default function FullscreenMenu({ isOpen, onClose }: FullscreenMenuProps)
           initial="hidden"
           animate="visible"
           exit="exit"
-          className="fixed inset-0 z-[100] bg-[#0B0F17] text-white flex flex-col justify-between overflow-y-auto selection:bg-[#FF4D2D] selection:text-white transform-gpu will-change-transform"
+          className="fixed inset-0 z-[100] bg-[#0B0F17] text-white flex flex-col justify-between overflow-y-auto overflow-x-hidden selection:bg-[#FF4D2D] selection:text-white transform-gpu will-change-transform"
         >
           {/* ФОНОВЫЕ СВЕЧЕНИЯ */}
           <div className="absolute top-0 right-1/4 w-[350px] sm:w-[500px] h-[350px] sm:h-[500px] bg-[#FF4D2D]/10 rounded-full blur-3xl pointer-events-none transform-gpu" />
@@ -154,10 +154,10 @@ export default function FullscreenMenu({ isOpen, onClose }: FullscreenMenuProps)
             >
               {/* ЛЕВЫЙ ИНВЕРТИРОВАННЫЙ УГОЛ */}
               <svg
-                className="absolute -left-4 -top-px w-4 h-4 text-[#161D2A] group-hover:text-[#FF4D2D] transition-colors fill-current pointer-events-none -scale-x-100"
+                className="absolute -left-4 -top-px w-4 h-4 text-[#161D2A] group-hover:text-[#FF4D2D] transition-colors fill-current pointer-events-none"
                 viewBox="0 0 16 16"
               >
-                <path d="M 16 0 A 16 16 0 0 0 0 16 L 0 0 Z" />
+                <path d="M 0 0 A 16 16 0 0 1 16 16 L 16 0 Z" />
               </svg>
 
               {/* ПРАВЫЙ ИНВЕРТИРОВАННЫЙ УГОЛ */}
