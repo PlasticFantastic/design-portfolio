@@ -152,18 +152,24 @@ export default function FullscreenMenu({ isOpen, onClose }: FullscreenMenuProps)
               onClick={onClose}
               className="pointer-events-auto group relative flex items-center justify-center gap-3 px-10 sm:px-12 pt-3 pb-3.5 bg-[#161D2A] text-white text-xs font-mono font-semibold uppercase tracking-widest rounded-b-2xl shadow-2xl border-b border-x border-white/10 hover:bg-[#FF4D2D] transition-all duration-300 hover:pt-4 hover:pb-4 cursor-pointer min-w-[200px]"
             >
+              {/* ЛЕВЫЙ ИНВЕРТИРОВАННЫЙ УГОЛ */}
               <svg
-                className="absolute -left-4 -top-px w-4 h-4 text-[#161D2A] group-hover:text-[#FF4D2D] transition-colors fill-current pointer-events-none -scale-x-100"
-                viewBox="0 0 16 16"
+                className="absolute -left-4 top-0 w-[17px] h-4 text-[#161D2A] group-hover:text-[#FF4D2D] transition-colors duration-300 pointer-events-none"
+                viewBox="0 0 17 16"
+                fill="none"
               >
-                <path d="M 16 0 A 16 16 0 0 0 0 16 L 0 0 Z" />
+                <path d="M 16 16 A 16 16 0 0 0 0 0 L 17 0 L 17 16 Z" fill="currentColor" />
+                <path d="M 16 16 A 16 16 0 0 0 0 0" stroke="rgba(255,255,255,0.1)" strokeWidth="1" />
               </svg>
 
+              {/* ПРАВЫЙ ИНВЕРТИРОВАННЫЙ УГОЛ */}
               <svg
-                className="absolute -right-4 -top-px w-4 h-4 text-[#161D2A] group-hover:text-[#FF4D2D] transition-colors fill-current pointer-events-none"
-                viewBox="0 0 16 16"
+                className="absolute -right-4 top-0 w-[17px] h-4 text-[#161D2A] group-hover:text-[#FF4D2D] transition-colors duration-300 pointer-events-none"
+                viewBox="0 0 17 16"
+                fill="none"
               >
-                <path d="M 16 0 A 16 16 0 0 0 16 16 L 0 0 Z" />
+                <path d="M 1 16 A 16 16 0 0 1 17 0 L 0 0 L 0 16 Z" fill="currentColor" />
+                <path d="M 1 16 A 16 16 0 0 1 17 0" stroke="rgba(255,255,255,0.1)" strokeWidth="1" />
               </svg>
 
               <span>Закрыть</span>
