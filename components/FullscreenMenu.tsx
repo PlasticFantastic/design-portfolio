@@ -1,4 +1,3 @@
-// src/components/FullscreenMenu.tsx
 'use client';
 
 import { useEffect, useState } from 'react';
@@ -69,35 +68,34 @@ const socialLinks = [
 const overlayVariants: Variants = {
   hidden: {
     opacity: 0,
-    clipPath: 'polygon(0 0, 100% 0, 100% 0, 0 0)',
+    y: '-100%',
   },
   visible: {
     opacity: 1,
-    clipPath: 'polygon(0 0, 100% 0, 100% 100%, 0 100%)',
+    y: '0%',
     transition: {
-      duration: 0.5,
+      duration: 0.4,
       ease: [0.16, 1, 0.3, 1] as const,
       when: 'beforeChildren',
-      staggerChildren: 0.05,
+      staggerChildren: 0.04,
     },
   },
   exit: {
     opacity: 0,
-    clipPath: 'polygon(0 0, 100% 0, 100% 0, 0 0)',
+    y: '-100%',
     transition: {
-      duration: 0.35,
+      duration: 0.3,
       ease: [0.7, 0, 0.84, 0] as const,
     },
   },
 };
 
 const itemVariants: Variants = {
-  hidden: { opacity: 0, y: 20, filter: 'blur(6px)' },
+  hidden: { opacity: 0, y: 16 },
   visible: {
     opacity: 1,
     y: 0,
-    filter: 'blur(0px)',
-    transition: { duration: 0.4, ease: [0.16, 1, 0.3, 1] as const },
+    transition: { duration: 0.35, ease: [0.16, 1, 0.3, 1] as const },
   },
 };
 
@@ -139,18 +137,18 @@ export default function FullscreenMenu({ isOpen, onClose }: FullscreenMenuProps)
           initial="hidden"
           animate="visible"
           exit="exit"
-          className="fixed inset-0 z-[100] bg-[#0B0F17] text-white flex flex-col justify-between overflow-y-auto selection:bg-[#FF4D2D] selection:text-white"
+          className="fixed inset-0 z-[100] bg-[#0B0F17] text-white flex flex-col justify-between overflow-y-auto selection:bg-[#FF4D2D] selection:text-white transform-gpu will-change-transform"
         >
           {/* ФОНОВЫЕ СВЕЧЕНИЯ */}
-          <div className="absolute top-0 right-1/4 w-[500px] h-[500px] bg-[#FF4D2D]/10 rounded-full blur-[140px] pointer-events-none" />
-          <div className="absolute bottom-0 left-1/3 w-[400px] h-[400px] bg-blue-600/5 rounded-full blur-[120px] pointer-events-none" />
+          <div className="absolute top-0 right-1/4 w-[350px] sm:w-[500px] h-[350px] sm:h-[500px] bg-[#FF4D2D]/10 rounded-full blur-3xl pointer-events-none transform-gpu" />
+          <div className="absolute bottom-0 left-1/3 w-[300px] sm:w-[400px] h-[300px] sm:h-[400px] bg-blue-600/5 rounded-full blur-3xl pointer-events-none transform-gpu" />
 
           {/* КНОПКА ЗАКРЫТИЯ */}
           <div className="sticky top-0 inset-x-0 z-50 flex justify-center pointer-events-none">
             <motion.button
               initial={{ y: -40, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
-              transition={{ delay: 0.45, duration: 0.4, ease: [0.16, 1, 0.3, 1] as const }}
+              transition={{ delay: 0.3, duration: 0.35, ease: [0.16, 1, 0.3, 1] as const }}
               onClick={onClose}
               className="pointer-events-auto group relative flex items-center justify-center gap-3 px-10 sm:px-12 pt-3 pb-3.5 bg-[#161D2A] text-white text-xs font-mono font-semibold uppercase tracking-widest rounded-b-2xl shadow-2xl border-b border-x border-white/10 hover:bg-[#FF4D2D] transition-all duration-300 hover:pt-4 hover:pb-4 cursor-pointer min-w-[200px]"
             >
@@ -165,7 +163,7 @@ export default function FullscreenMenu({ isOpen, onClose }: FullscreenMenuProps)
                 className="absolute -right-4 -top-px w-4 h-4 text-[#161D2A] group-hover:text-[#FF4D2D] transition-colors fill-current pointer-events-none"
                 viewBox="0 0 16 16"
               >
-                <path d="M 16 0 A 16 16 0 0 0 0 16 L 0 0 Z" />
+                <path d="M 16 0 A 16 16 0 0 0 16 16 L 0 0 Z" />
               </svg>
 
               <span>Закрыть</span>
@@ -219,7 +217,6 @@ export default function FullscreenMenu({ isOpen, onClose }: FullscreenMenuProps)
                           <polyline points="12 5 19 12 12 19" />
                         </svg>
 
-                        {/* Ультра-мягкая деликатная линия (10% opacity) во всю ширину */}
                         <span className="absolute left-0 bottom-0 w-full h-[1px] bg-white/10 scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left pointer-events-none" />
                       </Link>
                     </motion.div>
@@ -232,7 +229,7 @@ export default function FullscreenMenu({ isOpen, onClose }: FullscreenMenuProps)
                 
                 {/* 1. Плашка статуса */}
                 <motion.div variants={itemVariants}>
-                  <div className="inline-flex items-center gap-3 px-4 py-2 rounded-full bg-emerald-500/[0.06] border border-emerald-500/20 backdrop-blur-md shadow-[0_0_15px_rgba(16,185,129,0.08)]">
+                  <div className="inline-flex items-center gap-3 px-4 py-2 rounded-full bg-emerald-500/[0.06] border border-emerald-500/20 shadow-[0_0_15px_rgba(16,185,129,0.08)]">
                     <span className="relative flex h-2 w-2 shrink-0">
                       <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
                       <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-400" />
@@ -270,7 +267,7 @@ export default function FullscreenMenu({ isOpen, onClose }: FullscreenMenuProps)
                       social.isLocked ? (
                         <div
                           key={social.name}
-                          className="relative p-3.5 rounded-xl bg-white/[0.02] border border-white/5 opacity-40 blur-[1.5px] select-none pointer-events-none flex items-center justify-between"
+                          className="relative p-3.5 rounded-xl bg-white/[0.02] border border-white/5 opacity-40 select-none pointer-events-none flex items-center justify-between"
                         >
                           <div className="flex items-center gap-3">
                             <div className="p-2 rounded-lg bg-white/5 text-gray-500">
