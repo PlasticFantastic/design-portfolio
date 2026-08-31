@@ -223,7 +223,7 @@ function TypewriterDescription({ onComplete }: TypewriterProps) {
 // Кнопка перехода к проектам для мобильной версии
 function MobileProjectsSparkButton() {
   return (
-    <div className="relative py-8 sm:py-10 flex justify-center items-center lg:hidden">
+    <div className="relative py-12 sm:py-14 flex justify-center items-center lg:hidden">
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-0 h-0 pointer-events-none z-0">
         {sparkProjects.map((spark, idx) => (
           <motion.div
@@ -459,7 +459,7 @@ export default function Home() {
         </motion.div>
 
         {/* 3. БОКОВЫЕ ИНФО-БЛОКИ И СЛАЙДЕР В СЕТКЕ */}
-        <div className="relative z-30 w-full grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-6 items-start lg:items-end pb-8 lg:pb-6 mt-auto">
+        <div className="relative z-30 w-full grid grid-cols-1 lg:grid-cols-12 gap-12 sm:gap-14 lg:gap-6 items-start lg:items-end pb-8 lg:pb-6 mt-auto">
           
           {/* ЛЕВЫЙ БЛОК */}
           <motion.div
