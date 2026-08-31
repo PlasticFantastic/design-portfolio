@@ -322,7 +322,7 @@ export default function BioCasePage() {
 
             <div className="flex flex-wrap items-center gap-3 shrink-0">
               <a
-                href="mailto:contact@designer.com"
+                href="mailto:greensprites@gmail.com"
                 className="px-6 py-3.5 rounded-full bg-[#FF4D2D] hover:bg-white text-white hover:text-[#111827] font-bold text-xs sm:text-sm transition-all duration-300 shadow-lg shadow-[#FF4D2D]/20 hover:scale-105 active:scale-95 flex items-center gap-2"
               >
                 <svg
@@ -342,7 +342,7 @@ export default function BioCasePage() {
               </a>
 
               <a
-                href="https://t.me/"
+                href="https://t.me/goldsprites"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="px-6 py-3.5 rounded-full bg-white/10 hover:bg-white/20 text-white font-bold text-xs sm:text-sm backdrop-blur-md border border-white/15 transition-all duration-300 hover:scale-105 active:scale-95 flex items-center gap-2"
