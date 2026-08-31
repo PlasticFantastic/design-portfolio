@@ -301,10 +301,10 @@ export default function ContactPage() {
         variants={fadeInUp}
         className="relative z-10 w-full px-6 md:px-12 py-5 border-t border-white/10 bg-[#111827]/80 backdrop-blur-md text-[11px] font-mono text-gray-400 flex flex-col sm:flex-row justify-between items-center gap-2"
       >
-        <div>© 2026 NIKOLAY VISHNEV — ALL RIGHTS RESERVED</div>
+        <div>© 2026 VISHNEV.ART — ALL RIGHTS RESERVED</div>
 
         <div className="flex items-center gap-6">
-          <span className="hidden md:inline">UTC+3 (MOSCOW)</span>
+          <span className="hidden md:inline">UTC+3</span>
           <span className="hidden md:inline">•</span>
           <span className="text-gray-300 uppercase">AVAILABLE FOR NEW PROJECTS</span>
         </div>

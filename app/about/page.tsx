@@ -38,7 +38,7 @@ const experiences = [
     role: 'Product Designer',
     project: 'Продукт Slimmer (iOS, Android, Web)',
     description:
-      'Дневник для похудения до и после бариатрической операции.',
+      'Slimmer — цифровая платформа для людей, которые хотят контролировать вес, следить за показателями здоровья и получать консультации врачей.',
     tasks: [
       'Создание карты пользовательских сценариев (User Flow) с описанием логики',
       'Разработка графических прототипов',
@@ -750,10 +750,10 @@ export default function AboutPage() {
         </section>
 
         <footer className="relative w-full px-6 md:px-12 lg:px-16 py-5 border-t border-gray-800 bg-[#111827] text-[11px] font-mono text-gray-400 flex flex-col sm:flex-row justify-between items-center gap-2">
-          <div>© 2026 NIKOLAY VISHNEV — ALL RIGHTS RESERVED</div>
+          <div>© 2026 VISHNEV.ART — ALL RIGHTS RESERVED</div>
 
           <div className="flex items-center gap-6">
-            <span className="hidden md:inline">UTC+3 (MOSCOW)</span>
+            <span className="hidden md:inline">UTC+3</span>
             <span className="hidden md:inline">•</span>
             <a href="https://t.me/goldsprites" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors uppercase">
               Get in touch ↗

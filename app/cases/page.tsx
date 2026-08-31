@@ -337,3 +337,16 @@ export default function CasesCatalogPage() {
     </div>
   );
 }
+
+      {/* ФУТЕР */}
+      <footer className="relative z-40 w-full px-6 md:px-12 lg:px-16 py-4 border-t border-gray-200/60 bg-white/40 backdrop-blur-md flex flex-col sm:flex-row justify-between items-center gap-2 text-[11px] font-mono text-gray-400">
+        <div>© 2026 VISHNEV.ART — ALL RIGHTS RESERVED</div>
+
+        <div className="flex items-center gap-6">
+          <span className="hidden md:inline">UTC+3</span>
+          <span className="hidden md:inline">•</span>
+          <Link href="/contact" className="hover:text-[#111827] transition-colors uppercase">
+            Get in touch ↗
+          </Link>
+        </div>
+      </footer>
