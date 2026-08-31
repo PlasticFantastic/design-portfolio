@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { motion, AnimatePresence, useScroll, useMotionValueEvent, Variants } from 'framer-motion';
+import { motion, AnimatePresence, useScroll, useMotionValueEvent } from 'framer-motion';
 import Link from 'next/link';
 import Image from 'next/image';
 import { Oswald } from 'next/font/google';
@@ -15,18 +15,18 @@ const oswald = Oswald({
   display: 'swap',
 });
 
-const fadeIn: Variants = {
+const fadeIn = {
   hidden: { opacity: 0, y: 20 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] as const } },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] } },
 };
 
 const canvasImages = [
   'doo1.webp', 'doo2.webp', 'doo3.webp', 'doo4.webp', 'doo5.webp', 
-  'doo6.webp', 'doo7.webp', 'doo8.webp', 'doo9.webp', 'doo10.webp',
+  'doo6.webp', 'doo7.webp', 'doo8.webp', 'doo9.webp', 'doo10.webp', 
   'doo11.webp', 'doo12.webp', 'doo13.webp', 'doo14.webp', 'doo15.webp'
 ];
 
-export default function BioCasePage() {
+export default function AlexdoorsCasePage() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isFinished, setIsFinished] = useState(false);
   const { scrollYProgress } = useScroll();
@@ -40,11 +40,11 @@ export default function BioCasePage() {
     }
   });
 
-  // Исключаем текущий кейс (bio)
+  // 1. Исключаем текущий кейс (проверяем все варианты slug Letmebel / Alexdoors)
   const otherCases = ALL_CASES.filter((item) => {
     if (!item || !item.slug) return false;
     const slug = item.slug.toLowerCase();
-    return slug !== 'bio' && !slug.includes('bio');
+    return slug !== 'alexdoors' && slug !== 'letmebel' && !slug.includes('alexdoors') && !slug.includes('letmebel');
   }).slice(0, 3);
 
   const [activeSlide, setActiveSlide] = useState(0);
@@ -144,7 +144,7 @@ export default function BioCasePage() {
               initial={{ y: -40, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               exit={{ y: -40, opacity: 0 }}
-              transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] as const }}
+              transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
               className="pointer-events-auto flex flex-col items-center"
             >
               <button
@@ -170,7 +170,7 @@ export default function BioCasePage() {
       <div className="w-full max-w-[1440px] mx-auto px-4 sm:px-8 lg:px-12 pt-28 pb-12 sm:pt-32 sm:pb-16 lg:pb-20">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center">
           
-          {/* Левая часть: Заголовок и описание */}
+          {/* Левая часть: Заголовок и тонкое описание (стиль uni) */}
           <motion.div 
             initial="hidden" 
             animate="visible" 
@@ -181,10 +181,10 @@ export default function BioCasePage() {
               E-Commerce
             </span>
             <h1 className={`${oswald.className} text-4xl sm:text-6xl lg:text-7xl font-bold uppercase tracking-tight text-gray-900 leading-[1.1]`}>
-              Alex Doors
+              Letmebel
             </h1>
             <p className="mt-4 text-lg sm:text-2xl lg:text-3xl font-light text-gray-600 leading-relaxed font-sans max-w-xl">
-              Корпоративный сайт и интернет-магазин дверей
+              Интернет-магазин мебели
             </p>
           </motion.div>
 
@@ -197,8 +197,8 @@ export default function BioCasePage() {
           >
             <div className="w-full rounded-[20px] sm:rounded-[28px] overflow-hidden border border-gray-200/80 shadow-2xl shadow-black/10 bg-white">
               <Image 
-                src="/cases/bio/cover.webp" 
-                alt="Cover Bio" 
+                src="/cases/alexdoors/cover-a.webp" 
+                alt="Cover" 
                 width={1200} 
                 height={800} 
                 className="w-full h-auto object-cover" 
@@ -221,7 +221,7 @@ export default function BioCasePage() {
         {canvasImages.map((img, idx) => (
           <Image
             key={idx}
-            src={`/cases/bio/${img}`}
+            src={`/cases/alexdoors/${img}`}
             alt={`Canvas section ${idx + 1}`}
             width={1440}
             height={900} 
@@ -231,7 +231,7 @@ export default function BioCasePage() {
         ))}
       </motion.div>
 
-      {/* НИЖНИЙ БЛОК: Секция "Смотрите также" и футер */}
+      {/* НИЖНИЙ БЛОК: Последние два блока в стандартной сетке */}
       <div className="flex-1 w-full max-w-5xl mx-auto px-4 sm:px-8 lg:px-12 pt-24 pb-16 sm:pb-24">
         
         {/* БЛОК "СМОТРИТЕ ТАКЖЕ" */}
@@ -261,7 +261,7 @@ export default function BioCasePage() {
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
-                  transition={{ delay: idx * 0.08, duration: 0.5, ease: [0.16, 1, 0.3, 1] as const }}
+                  transition={{ delay: idx * 0.08, duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
                 >
                   <Link
                     href={`/cases/${item.slug}`}
@@ -278,7 +278,7 @@ export default function BioCasePage() {
                         />
                       ) : (
                         <div
-                          className={`absolute inset-0 bg-gradient-to-tr ${(item as any).gradient || 'from-gray-900 to-gray-800'} opacity-90`}
+                          className={`absolute inset-0 bg-gradient-to-tr ${item.gradient || 'from-gray-900 to-gray-800'} opacity-90`}
                         />
                       )}
 
@@ -338,7 +338,7 @@ export default function BioCasePage() {
                     initial={{ opacity: 0, x: 40 }}
                     animate={{ opacity: 1, x: 0 }}
                     exit={{ opacity: 0, x: -40 }}
-                    transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] as const }}
+                    transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
                     className="cursor-grab active:cursor-grabbing"
                   >
                     <Link
@@ -356,7 +356,7 @@ export default function BioCasePage() {
                           />
                         ) : (
                           <div
-                            className={`absolute inset-0 bg-gradient-to-tr ${(currentMobileCase as any).gradient || 'from-gray-900 to-gray-800'} opacity-90`}
+                            className={`absolute inset-0 bg-gradient-to-tr ${currentMobileCase.gradient || 'from-gray-900 to-gray-800'} opacity-90`}
                           />
                         )}
 
