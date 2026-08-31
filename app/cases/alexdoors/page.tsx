@@ -21,8 +21,9 @@ const fadeIn: Variants = {
 };
 
 const canvasImages = [
-  'bio1.webp', 'bio2.webp', 'bio3.webp', 'bio4.webp', 'bio5.webp', 
-  'bio6.webp', 'bio7.webp', 'bio8.webp', 'bio9.webp', 'bio10.webp'
+  'doo1.webp', 'doo2.webp', 'doo3.webp', 'doo4.webp', 'doo5.webp', 
+  'doo6.webp', 'doo7.webp', 'doo8.webp', 'doo9.webp', 'doo10.webp',
+  'doo11.webp', 'doo12.webp', 'doo13.webp', 'doo14.webp', 'doo15.webp'
 ];
 
 export default function BioCasePage() {
@@ -177,13 +178,13 @@ export default function BioCasePage() {
             className="flex flex-col items-start"
           >
             <span className="inline-block mb-4 sm:mb-6 text-[10px] sm:text-xs font-mono font-bold text-[#FF4D2D] uppercase tracking-widest bg-[#FF4D2D]/10 px-3.5 py-1.5 rounded-full border border-[#FF4D2D]/20">
-              Branding / UI/UX
+              E-Commerce
             </span>
             <h1 className={`${oswald.className} text-4xl sm:text-6xl lg:text-7xl font-bold uppercase tracking-tight text-gray-900 leading-[1.1]`}>
-              Bio
+              Alex Doors
             </h1>
             <p className="mt-4 text-lg sm:text-2xl lg:text-3xl font-light text-gray-600 leading-relaxed font-sans max-w-xl">
-              Продуктовый дизайн и визуальная концепция
+              Корпоративный сайт и интернет-магазин дверей
             </p>
           </motion.div>
 
