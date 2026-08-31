@@ -213,7 +213,7 @@ export default function Home() {
   const badges = ['Web Apps', 'Mobile Apps', 'Product Design', 'HealthTech', 'AI Workflow', 'B2C', 'B2B'];
 
   return (
-    <main className="relative min-h-screen lg:h-screen w-full bg-[#F8F9FA] text-[#111827] overflow-y-auto lg:overflow-hidden flex flex-col justify-between font-sans select-none antialiased pt-16 lg:pt-20">
+    <main className="relative min-h-screen lg:h-screen w-full bg-[#F8F9FA] text-[#111827] overflow-y-auto lg:overflow-hidden flex flex-col justify-between font-sans select-none antialiased pt-24 lg:pt-20">
       
       {/* Фоновый градиент */}
       <HeroGlowCanvas />

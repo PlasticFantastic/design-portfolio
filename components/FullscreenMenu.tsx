@@ -197,7 +197,7 @@ export default function FullscreenMenu({ isOpen, onClose }: FullscreenMenuProps)
                       <Link
                         href={link.href}
                         onClick={onClose}
-                        className="group relative flex items-center justify-between py-3 sm:py-4 text-3xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-gray-400 hover:text-white transition-colors duration-300"
+                        className="group relative flex items-center justify-between py-3 sm:py-4 text-3xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-white sm:text-gray-400 sm:hover:text-white transition-colors duration-300"
                       >
                         <div className="flex items-center gap-4 sm:gap-6 transform group-hover:translate-x-3 transition-transform duration-300 ease-out">
                           <span className="text-xs sm:text-sm font-mono font-medium text-gray-600 group-hover:text-[#FF4D2D] transition-colors duration-300">
