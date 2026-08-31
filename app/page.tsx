@@ -3,7 +3,7 @@
 
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
-import { motion, useMotionValue, useSpring, AnimatePresence } from 'framer-motion';
+import { motion, useMotionValue, useSpring, AnimatePresence, cubicBezier } from 'framer-motion';
 import Link from 'next/link';
 import Image from 'next/image';
 import { Oswald } from 'next/font/google';
@@ -19,6 +19,52 @@ const oswald = Oswald({
   weight: ['700'],
   display: 'swap',
 });
+
+const sparkEase = cubicBezier(0.25, 0.1, 0.25, 1);
+
+// Конфигурация точек вылета искр для кнопки проектов
+const sparkProjects = [
+  {
+    src: '/cases/slimmer/cover.webp',
+    targetX: -110,
+    targetY: -80,
+    rotate: -16,
+    maxScale: 0.5,
+    delay: 0,
+  },
+  {
+    src: '/cases/alexdoors/cover.webp',
+    targetX: 110,
+    targetY: -85,
+    rotate: 16,
+    maxScale: 0.48,
+    delay: 0.84,
+  },
+  {
+    src: '/cases/letmebel/cover.webp',
+    targetX: 100,
+    targetY: 60,
+    rotate: -12,
+    maxScale: 0.45,
+    delay: 1.68,
+  },
+  {
+    src: '/cases/biotime/cover.webp',
+    targetX: -100,
+    targetY: 55,
+    rotate: 10,
+    maxScale: 0.45,
+    delay: 2.52,
+  },
+  {
+    src: '/cases/vsesvoi/cover.webp',
+    targetX: 0,
+    targetY: -115,
+    rotate: 8,
+    maxScale: 0.5,
+    delay: 3.36,
+  },
+];
 
 // Анимация букв заголовка NIKOLAY VISHNEV
 const titleContainerVariants = {
@@ -170,6 +216,67 @@ function TypewriterDescription({ onComplete }: TypewriterProps) {
           />
         )}
       </div>
+    </div>
+  );
+}
+
+// Кнопка перехода к проектам для мобильной версии
+function MobileProjectsSparkButton() {
+  return (
+    <div className="relative py-8 sm:py-10 flex justify-center items-center lg:hidden">
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-0 h-0 pointer-events-none z-0">
+        {sparkProjects.map((spark, idx) => (
+          <motion.div
+            key={idx}
+            initial={{ opacity: 0, scale: 0.1, x: 0, y: 0, rotate: 0 }}
+            animate={{
+              opacity: [0, 0.8, 0.5, 0],
+              scale: [0.1, spark.maxScale, spark.maxScale * 0.85, 0.1],
+              x: [0, spark.targetX * 0.35, spark.targetX * 0.85, spark.targetX],
+              y: [0, spark.targetY * 0.35, spark.targetY * 0.85, spark.targetY],
+              rotate: [0, spark.rotate * 0.35, spark.rotate * 0.85, spark.rotate],
+            }}
+            transition={{
+              duration: 4.2,
+              repeat: Infinity,
+              repeatDelay: 0,
+              delay: spark.delay,
+              ease: sparkEase,
+              times: [0, 0.2, 0.75, 1],
+            }}
+            style={{ willChange: 'transform, opacity' }}
+            className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-14 sm:w-16 aspect-[16/10] rounded-lg overflow-hidden border border-white shadow-md bg-[#111827] transform-gpu pointer-events-none"
+          >
+            <Image
+              src={spark.src}
+              alt="Project Spark"
+              fill
+              sizes="64px"
+              className="object-cover pointer-events-none"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent pointer-events-none" />
+          </motion.div>
+        ))}
+      </div>
+
+      <Link
+        href="/cases"
+        className="group relative z-10 inline-flex items-center gap-3 px-9 py-4 rounded-full bg-[#111827] text-white text-xs font-mono font-bold uppercase tracking-widest overflow-hidden transition-all duration-300 hover:bg-[#FF4D2D] hover:shadow-[0_0_40px_rgba(255,77,45,0.45)] hover:scale-105 active:scale-95 border border-white/10"
+      >
+        <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-out" />
+        <span>Все проекты</span>
+        <motion.svg
+          className="w-4 h-4 text-[#FF4D2D] group-hover:text-white transition-colors"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+          strokeWidth="2.5"
+          animate={{ x: [0, 4, 0] }}
+          transition={{ repeat: Infinity, duration: 1.5, ease: 'easeInOut' }}
+        >
+          <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+        </motion.svg>
+      </Link>
     </div>
   );
 }
@@ -380,7 +487,7 @@ export default function Home() {
                 <motion.span
                   key={badge}
                   variants={tagItemVariants}
-                  className="px-3 py-1 rounded-lg bg-white/90 border border-gray-200/80 text-[#111827] text-[11px] font-semibold shadow-xs hover:border-[#FF4D2D] hover:text-[#FF4D2D] transition-colors cursor-default"
+                  className="px-3 py-1 rounded-lg bg-[#111827] border border-gray-200/80 text-white text-[11px] font-semibold shadow-xs hover:border-[#FF4D2D] hover:text-[#FF4D2D] transition-colors cursor-default"
                 >
                   {badge}
                 </motion.span>
@@ -409,6 +516,7 @@ export default function Home() {
             className="col-span-1 lg:col-span-6 xl:col-span-6 w-full flex flex-col items-stretch [&>*]:w-full"
           >
             <RecentProjectsSlider />
+            <MobileProjectsSparkButton />
           </motion.div>
 
         </div>
