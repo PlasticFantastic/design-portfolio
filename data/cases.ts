@@ -49,7 +49,7 @@ export const ALL_CASES: CaseItem[] = [
     category: 'E-Commerce',
     year: 'Web',
     shortDescription: 'Дизайн интернет-магазина для сибирского разработчика инъекционных препаратов и средств профессионального и домашнего ухода.',
-    coverSrc: '/cases/bio/cover.webp',
+    coverSrc: '/cases/biotime/cover.webp',
     accentGradient: 'from-sky-600/30 via-indigo-500/10 to-transparent',
   },
   {
@@ -59,7 +59,7 @@ export const ALL_CASES: CaseItem[] = [
     category: 'MarketPlace',
     year: 'Web',
     shortDescription: 'Цифровой сервис, который помогает русскоязычным пользователям находить специалистов и услуги во Франции.',
-    coverSrc: '/cases/svoi/cover.webp',
+    coverSrc: '/cases/vsesvoi/cover.webp',
     accentGradient: 'from-purple-600/30 via-fuchsia-500/10 to-transparent',
   },
   {
@@ -99,7 +99,7 @@ export const ALL_CASES: CaseItem[] = [
     category: 'E-Commerce',
     year: 'Web',
     shortDescription: 'Корпоративный сайт и интернет-магазин с точным подбором параметров и фильтрацией.',
-    coverSrc: '/cases/doors/cover.webp',
+    coverSrc: '/cases/alexdoors/cover.webp',
     accentGradient: 'from-stone-600/30 via-zinc-500/10 to-transparent',
   },
 ];
