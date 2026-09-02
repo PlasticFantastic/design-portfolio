@@ -16,8 +16,9 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Nick Vishnev — Product & UX/UI Designer",
-  description: "Портфолио продуктового и UX/UI дизайнера Николая Вишнева",
+  title: "Nick Vishnev — Product Designer",
+  description:
+    "Портфолио Николая Вишнева, Product Designer. UX/UI, цифровые продукты, HealthTech, SaaS, e-commerce и web.",
 };
 
 export default function RootLayout({
